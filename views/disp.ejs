@@ -1,0 +1,224 @@
+<%- include("parts/head.ejs") %>
+<div class="container">
+    <div id="content">
+        <div id="sendinfo" class=" col-sm-6 col-xs-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-sm-6">Данные отправителя</div><button class="btn btn-default" id="tempAddDisp">Сохранить в шабон</button></div>
+                </div>
+
+                <div class="panel-body">
+                    <div class="form-group">
+                        <label class="control-label col-sm-4" for="SendCity">Город:</label>
+                        <div class="col-sm-8 paddingbottomclass">
+                            <div class="tempCity"><%=num.SendCity %></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-4" for="SendAdress">Адрес:</label>
+                        <div class="col-sm-8 paddingbottomclass">
+                            <div class="tempAdress"> <%=num.SendAdress %></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-4" for="SendPhone">Телефон:</label>
+                        <div class="col-sm-8 paddingbottomclass">
+                            <div class="tempPhone"> <%=num.SendPhone %></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-4" for="SendPerson">Контактное лицо:</label>
+                        <div class="col-sm-8 paddingbottomclass">
+                            <div class="tempPerson"> <%=num.SendPerson %></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-4" for="SendCompany">Компания:</label>
+                        <div class="col-sm-8 paddingbottomclass">
+                            <div class="tempCompany"> <%=num.SendCompany %></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-4" for="SendAddInfo">Примечание:</label>
+                        <div class="col-sm-8">
+                            <div class="tempAddInfo">  <%=num.SendAddInfo %> </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="recinfo" class="col-sm-6 col-xs-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+
+                    <div class="row">
+                        <div class="col-sm-6">Данные получателя</div><button class="btn btn-default" id="tempAddDispr">Сохранить в шабон</button> <div class="col-sm-6">
+                        </div>
+                    </div>
+
+                </div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <label class="control-label col-sm-4" for="SendCity">Город:</label>
+                        <div class="col-sm-8 paddingbottomclass">
+                            <div class="tempCityr"> <%=num.RecCity %></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-4" for="SendAdress">Адрес:</label>
+                        <div class="col-sm-8 paddingbottomclass">
+                            <div class="tempAdressr">  <%=num.RecAdress %></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-4" for="SendPhone">Телефон:</label>
+                        <div class="col-sm-8 paddingbottomclass">
+                            <div class="tempPhoner">   <%=num.RecPhone %> </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-4" for="SendPerson">Контактное лицо:</label>
+                        <div class="col-sm-8 paddingbottomclass">
+                            <div class="tempPersonr">  <%=num.RecPerson %> </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-4" for="SendCompany">Компания:</label>
+                        <div class="col-sm-8 paddingbottomclass">
+                            <div class="tempCompanyr"> <%=num.RecCompany %></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-4" for="SendAddInfo">Примечание:</label>
+                        <div class="col-sm-8">
+                            <div class="tempAddInfor">  <%=num.RecAddInfo %> </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="geninfo" class="col-sm-12 col-xs-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">Грузы</div>
+                <div class="panel-body">
+
+                    <div  id="cargo">
+
+                        <table class="table table-bordered">
+                            <tr>
+                                <td>п.п.</td>
+                                <td>Вес (кг)</td>
+                                <td>Длина (см)</td>
+                                <td>Ширина (см)</td>
+                                <td>Высота (см)</td>
+                                <td>Объем (м.куб.)</td>
+                            </tr>
+                            <% var counter = 0; %>
+                            <% num.Cargo.forEach(function (carg) { %>
+                            <tr>
+                                <td><%=counter = counter+1 %></td>
+                                <td><%=carg.m %></td>
+                                <td><%=carg.h %></td>
+                                <td><%=carg.l %></td>
+                                <td><%=carg.w %></td>
+                                <td><%=carg.h*carg.l*carg.w/5000 %></td>
+                            </tr>
+
+                            <%   }) %>
+                        </table>
+
+
+                        </div>
+                    </div>
+                    <table class="table">
+                        <td>Количество мест: <%=num.Totalq %></td>
+                        <td>Итого вес (кг): <%=num.Totalm %></td>
+                        <td>Объемный вес (кг): <%=num.Totalv %></td>
+                    </table>
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">Данные об отправлении</div>
+                <div class="panel-body">
+
+                    <div class="form-group">
+                        <label class="control-label col-sm-3" for="sel1">Срочность:</label>
+                        <div class="col-sm-9 paddingbottomclass">
+                            <%=num.DelType %>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-sm-3" for="sel1">Тип оплаты:</label>
+                        <div class="col-sm-9 paddingbottomclass">
+                            <%=num.PayType %>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-sm-3" for="sel1">Страховая стоимость:</label>
+                        <div class="col-sm-9 paddingbottomclass">
+                            <%=num.InsurValue %>
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-3" for="sel1">Наложенный платеж:</label>
+                        <div class="col-sm-9 paddingbottomclass">
+                            <%=num.COD %>
+
+                        </div>
+                    </div>
+                    <div id="geninfo" class="col-sm-12 col-xs-12">
+                        <div class="panel panel-default">
+                        <div class="panel-heading">История</div>
+                        <div class="panel-body">
+
+                            <div>
+
+                                <table class="table table-bordered">
+                                    <tr>
+                                        <th>Дата</th>
+                                        <th>Статус</th>
+                                        <th>Комментарий</th>
+
+                                    </tr>
+                                    <% var counter = 0; %>
+                                    <% num.History.table.forEach(function (tab) { %>
+                                    <tr>
+                                        <td><%=tab.Date %></td>
+                                        <td><%=tab.Status %></td>
+                                        <td><%=tab.Comment %></td>
+
+                                    </tr>
+
+                                    <%   }); %>
+                                </table>
+                            </div>
+                        </div></div>
+
+
+                    <div class="form-group">
+                        <form method="Get" action="/pdfdisp/<%=disp %>">
+                            <button class="btn">Печать</button>
+                        </form>
+                    </div>
+                    <div class="form-group">
+
+                        <a class="btn" href="/requestdelivery?copy=<%=disp %>">Копировать</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+
+
+</div>
+<%- include("parts/footer.ejs") %>

@@ -1,0 +1,436 @@
+<html>
+
+<head>
+
+    <meta http-equiv=Content-Type content="text/html; charset=utf-8">
+
+    <title>СВС-Логистик</title>
+    <script type="text/javascript" src="/public/js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="/public/js/jquery-barcode.js"></script>
+    <style>
+        @media print {
+            body {-webkit-print-color-adjust: exact;}
+        }
+
+        @font-face {
+            font-family: Code39; /* Гарнитура шрифта */
+            src: url(/public/fonts/Code39.ttf); /* Путь к файлу со шрифтом */
+        }
+
+        .disptable {
+            border-collapse: collapse;
+            font-family:Calibri;
+
+        }
+
+        .dispth {
+            border: 1px solid #ee1c25;
+            background:#ee1c25;
+            font-size:7pt;
+            color:white;
+            font-weight: bold;
+            padding: 1pt;
+            height:13pt
+        }
+
+        .disptd {
+            border: 1px solid #ee1c25;
+            font-size:7pt;
+            padding: 1pt;
+            height:13pt
+        }
+
+        .disptdcontact {
+            font-size:8pt;
+            padding: 2pt;
+
+        }
+
+        .p_contact{
+            margin-top: 0px;
+            margin-bottom: 0px;
+            text-align: right;
+        }
+
+        .disp_logo{
+            margin-top: 0px;
+            margin-bottom: 0px;
+            text-align: center;
+        }
+
+        .disp_bc{
+             margin-top: 0px;
+             margin-bottom: 0px;
+             text-align: center;
+             font-size:13pt;
+         }
+
+        .disp_num{
+            margin-top: 7px;
+            margin-bottom: 0px;
+
+            font-size:6pt;
+        }
+        .disp_check{
+            text-align: center;
+        }
+        .barcode {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+    </style>
+</head>
+
+<body style='margin:0'>
+
+<div>
+
+    <table class = 'disptable'>
+        <tr>
+            <td style='width:32mm;'></td>
+            <td style='width:15mm;'></td>
+            <td style='width:15mm;'></td>
+            <td style='width:32mm;'></td>
+            <td style='width:25mm;'></td>
+            <td style='width:20mm;'></td>
+            <td style='width:25mm;'></td>
+            <td style='width:20mm;'></td>
+        </tr>
+        <tr>
+            <td colspan=3 rowspan=2 >
+                <div class="barcode"></div>
+            </td>
+            <td  rowspan=2 class = "disptdcontact">
+                <p class= "p_contact" >+7 (383) 214-41-97</p>
+                <p class= "p_contact" >+7 (383) 214-41-98</p>
+                <p class= "p_contact" >www.svs-logistik.ru/</p>
+            </td>
+            <td class = "disp_logo" colspan=2 rowspan=2 ><img src="/public/img/print-logo.png"></td>
+
+            <td class = "disptd" colspan=2 >Номер упаковки:</td>
+        </tr>
+        <tr>
+            <td class = "disptd" colspan=2 >Номер заказа:</td>
+        </tr>
+        <tr>
+            <td class = "dispth" colspan=4 >1. ОТ КОГО (ОТПРАВИТЕЛЬ)</td>
+            <td class = "dispth" colspan=2 >4. СТРАХОВАНИЕ ОТПРАВЛЕНИЯ</td>
+            <td class = "dispth" colspan=2 >5. СРОЧНОСТЬ </td>
+        </tr>
+        <tr>
+            <td class = "disptd"> Название организации </td>
+            <td class = "disptd" colspan=3><%=num.SendCompany %></td>
+            <td class = "disptd">Страховая сумма</td>
+            <td class = "disptd"><%=num.InsurValue %></td>
+            <td class = "disptd" colspan=2 rowspan=2><%=num.DelType %></td>
+        </tr>
+        <tr>
+            <td class = "disptd">ФИО Отправителя</td>
+            <td class = "disptd" colspan=3><%=num.SendPerson %></td>
+            <td class = "disptd">Страховой взнос</td>
+            <td class = "disptd"></td>
+
+        </tr>
+        <tr>
+            <td class = "disptd">Город</td>
+            <td class = "disptd" colspan=3><%=num.SendCity %></td>
+            <td class = "dispth" colspan=4 >7. ДОПОЛНИТЕЛЬНЫЕ УСЛУГИ</td>
+        </tr>
+        <tr>
+            <td class = "disptd">Адрес</td>
+            <td class = "disptd" colspan=3><%=num.SendAdress %></td>
+            <td class = "disptd">С уведомлением</td>
+            <td class = "disptd disp_check"><%=num.Uved %></td>
+            <td class = "disptd">Опасный груз</td>
+            <td class = "disptd disp_check"><%=num.Opasn %></td>
+        </tr>
+        <tr>
+            <td class = "disptd">Телефон</td>
+            <td class = "disptd" colspan=3><%=num.SendPhone %></td>
+            <td class = "disptd">Скан накладной</td>
+            <td class = "disptd disp_check"><%=num.Scan %></td>
+            <td class = "disptd">Возврат подписанных</td>
+            <td class = "disptd disp_check"><%=num.Podp %></td>
+        </tr>
+        <tr>
+            <td class = "disptd">Примечание</td>
+            <td class = "disptd" colspan=3><%=num.SendAddInfo %></td>
+            <td class = "dispth" colspan=2 >СВЕДЕНИЯ ОБ ОПЛАТЕ</td>
+            <td class = "dispth" colspan=2 >СТОИМОСТЬ ДОСТАВКИ</td>
+        </tr>
+        <tr>
+            <td class = "dispth" colspan=4 >2. КОМУ (ПОЛУЧАТЕЛЬ)</td>
+            <td class = "disptd" colspan=2><%=num.PayType %></td>
+            <td class = "disptd" colspan=2><%=num.Price %></td>
+        </tr>
+        <tr>
+            <td class = "disptd">Название организации</td>
+            <td class = "disptd" colspan=3><%=num.RecCompany %></td>
+            <td class = "dispth" colspan=4 >8. ПРИМЕЧАНИЕ</td>
+        </tr>
+        <tr>
+            <td class = "disptd">ФИО Получателя</td>
+            <td class = "disptd" colspan=3><%=num.RecPerson %></td>
+            <td class = "disptd" colspan=4></td>
+        </tr>
+        <tr>
+            <td class = "disptd">Город</td>
+            <td class = "disptd" colspan=3><%=num.RecCity %></td>
+            <td class = "disptd" colspan=4></td>
+        </tr>
+        <tr>
+            <td class = "disptd">Адрес</td>
+            <td class = "disptd" colspan=3><%=num.RecAdress %></td>
+            <td class = "disptd" colspan=4></td>
+        </tr>
+        <tr>
+            <td class = "disptd">Телефон</td>
+            <td class = "disptd" colspan=3><%=num.RecPhone %></td>
+            <td class = "dispth" colspan=4 >9. ПРИЕМ ОТПРАВЛЕНИЯ</td>
+        </tr>
+        <tr>
+            <td class = "disptd">Примечание</td>
+            <td class = "disptd" colspan=3><%=num.RecAddInfo %></td>
+            <td class = "disptd" colspan=2 >Дата _____._____ 20_____г.</td>
+            <td class = "disptd" colspan=2 >Время _______:_______</td>
+        </tr>
+        <tr>
+            <td class = "dispth" colspan=4 >3. ОПИСАНИЕ ВЛОЖИМОГО</td>
+            <td class ="disptd" colspan=2>ФИО Сотрудника</td>
+            <td class = "disptd" colspan=2>Подпись Сотрудника</td>
+        </tr>
+        <tr>
+            <td class = "disptd">Общее описание</td>
+            <td class = "disptd">Кол-во мест</td>
+            <td class = "disptd">Вес (кг)</td>
+            <td class = "disptd">Габариты (см)</td>
+            <td class = "dispth" colspan=4 >10. ИНФОРМАЦИЯ О ВРУЧЕНИИ ОТПРАВЛЕНИЯ</td>
+        </tr>
+        <tr>
+            <td class = "disptd"></td>
+            <td class = "disptd"></td>
+            <td class = "disptd"></td>
+            <td class = "disptd"></td>
+            <td class = "disptd" colspan=2 >Дата _____._____ 20_____г.</td>
+            <td class = "disptd" colspan=2 >Время _______:_______</td>
+        </tr>
+        <tr>
+            <td class = "disptd"></td>
+            <td class = "disptd"></td>
+            <td class = "disptd"></td>
+            <td class = "disptd"></td>
+            <td class = "disptd" colspan=4 rowspan=2 style = "vertical-align: top">ФИО Получателя</td>
+        </tr>
+        <tr>
+            <td class = "disptd"></td>
+            <td class = "disptd"></td>
+            <td class = "disptd"></td>
+            <td class = "disptd"></td>
+        </tr>
+        <tr>
+            <td class = "disptd"></td>
+            <td class = "disptd"></td>
+            <td class = "disptd"></td>
+            <td class = "disptd"></td>
+            <td class = "disptd" colspan=2 >Подпись Получателя</td>
+            <td class = "disptd" colspan=2 >Должность</td>
+        </tr>
+        <tr>
+            <td class = "disptd"></td>
+
+            <td class = "disptd">Всего  <%=num.Totalq %></td>
+            <td class = "disptd">Всего <%=num.Totalm %></td>
+            <td class = "disptd">Объемный вес <%=num.Totalv %></td>
+            <td class = "disptd" colspan=4 >ФИО Сотрудника Исполнителя</td>
+        </tr>
+
+    </table>
+    <p class= "disp_num"> Я подтверждаю, что отправления не содержат предметы, запрещенные к пересылке. С условиями пересылки согласен. С регламентом компании ознакомлен. Подпись отправителя:</p>
+</div>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<div>
+
+    <table class = 'disptable'>
+        <tr>
+            <td style='width:32mm;'></td>
+            <td style='width:15mm;'></td>
+            <td style='width:15mm;'></td>
+            <td style='width:32mm;'></td>
+            <td style='width:25mm;'></td>
+            <td style='width:20mm;'></td>
+            <td style='width:25mm;'></td>
+            <td style='width:20mm;'></td>
+        </tr>
+        <tr>
+            <td colspan=3 rowspan=2 >
+                <div class="barcode"></div>
+            </td>
+            <td  rowspan=2 class = "disptdcontact">
+                <p class= "p_contact" >+7 (383) 214-41-97</p>
+                <p class= "p_contact" >+7 (383) 214-41-98</p>
+                <p class= "p_contact" >www.svs-logistik.ru</p>
+            </td>
+            <td class = "disp_logo" colspan=2 rowspan=2 ><img src="/public/img/print-logo.png"></td>
+
+            <td class = "disptd" colspan=2 >Номер упаковки:</td>
+        </tr>
+        <tr>
+            <td class = "disptd" colspan=2 >Номер заказа:</td>
+        </tr>
+        <tr>
+            <td class = "dispth" colspan=4 >1. ОТ КОГО (ОТПРАВИТЕЛЬ)</td>
+            <td class = "dispth" colspan=2 >4. СТРАХОВАНИЕ ОТПРАВЛЕНИЯ</td>
+            <td class = "dispth" colspan=2 >5. СРОЧНОСТЬ </td>
+        </tr>
+        <tr>
+            <td class = "disptd"> Название организации </td>
+            <td class = "disptd" colspan=3><%=num.SendCompany %></td>
+            <td class = "disptd">Страховая сумма</td>
+            <td class = "disptd"><%=num.InsurValue %></td>
+            <td class = "disptd" colspan=2 rowspan=2><%=num.DelType %></td>
+        </tr>
+        <tr>
+            <td class = "disptd">ФИО Отправителя</td>
+            <td class = "disptd" colspan=3><%=num.SendPerson %></td>
+            <td class = "disptd">Страховой взнос</td>
+            <td class = "disptd"></td>
+
+        </tr>
+        <tr>
+            <td class = "disptd">Город</td>
+            <td class = "disptd" colspan=3><%=num.SendCity %></td>
+            <td class = "dispth" colspan=4 >7. ДОПОЛНИТЕЛЬНЫЕ УСЛУГИ</td>
+        </tr>
+        <tr>
+            <td class = "disptd">Адрес</td>
+            <td class = "disptd" colspan=3><%=num.SendAdress %></td>
+            <td class = "disptd">С уведомлением</td>
+            <td class = "disptd disp_check"><%=num.Uved %></td>
+            <td class = "disptd">Опасный груз</td>
+            <td class = "disptd disp_check"><%=num.Opasn %></td>
+        </tr>
+        <tr>
+            <td class = "disptd">Телефон</td>
+            <td class = "disptd" colspan=3><%=num.SendPhone %></td>
+            <td class = "disptd">Скан накладной</td>
+            <td class = "disptd disp_check"><%=num.Scan %></td>
+            <td class = "disptd">Возврат подписанных</td>
+            <td class = "disptd disp_check"><%=num.Podp %></td>
+        </tr>
+        <tr>
+            <td class = "disptd">Примечание</td>
+            <td class = "disptd" colspan=3><%=num.SendAddInfo %></td>
+            <td class = "dispth" colspan=2 >СВЕДЕНИЯ ОБ ОПЛАТЕ</td>
+            <td class = "dispth" colspan=2 >СТОИМОСТЬ ДОСТАВКИ</td>
+        </tr>
+        <tr>
+            <td class = "dispth" colspan=4 >2. КОМУ (ПОЛУЧАТЕЛЬ)</td>
+            <td class = "disptd" colspan=2><%=num.PayType %></td>
+            <td class = "disptd" colspan=2><%=num.Price %></td>
+        </tr>
+        <tr>
+            <td class = "disptd">Название организации</td>
+            <td class = "disptd" colspan=3><%=num.RecCompany %></td>
+            <td class = "dispth" colspan=4 >8. ПРИМЕЧАНИЕ</td>
+        </tr>
+        <tr>
+            <td class = "disptd">ФИО Получателя</td>
+            <td class = "disptd" colspan=3><%=num.RecPerson %></td>
+            <td class = "disptd" colspan=4></td>
+        </tr>
+        <tr>
+            <td class = "disptd">Город</td>
+            <td class = "disptd" colspan=3><%=num.RecCity %></td>
+            <td class = "disptd" colspan=4></td>
+        </tr>
+        <tr>
+            <td class = "disptd">Адрес</td>
+            <td class = "disptd" colspan=3><%=num.RecAdress %></td>
+            <td class = "disptd" colspan=4></td>
+        </tr>
+        <tr>
+            <td class = "disptd">Телефон</td>
+            <td class = "disptd" colspan=3><%=num.RecPhone %></td>
+            <td class = "dispth" colspan=4 >9. ПРИЕМ ОТПРАВЛЕНИЯ</td>
+        </tr>
+        <tr>
+            <td class = "disptd">Примечание</td>
+            <td class = "disptd" colspan=3><%=num.RecAddInfo %></td>
+            <td class = "disptd" colspan=2 >Дата _____._____ 20_____г.</td>
+            <td class = "disptd" colspan=2 >Время _______:_______</td>
+        </tr>
+        <tr>
+            <td class = "dispth" colspan=4 >3. ОПИСАНИЕ ВЛОЖИМОГО</td>
+            <td class ="disptd" colspan=2>ФИО Сотрудника</td>
+            <td class = "disptd" colspan=2>Подпись Сотрудника</td>
+        </tr>
+        <tr>
+            <td class = "disptd">Общее описание</td>
+            <td class = "disptd">Кол-во мест</td>
+            <td class = "disptd">Вес (кг)</td>
+            <td class = "disptd">Габариты (см)</td>
+            <td class = "dispth" colspan=4 >10. ИНФОРМАЦИЯ О ВРУЧЕНИИ ОТПРАВЛЕНИЯ</td>
+        </tr>
+        <tr>
+            <td class = "disptd"></td>
+            <td class = "disptd"></td>
+            <td class = "disptd"></td>
+            <td class = "disptd"></td>
+            <td class = "disptd" colspan=2 >Дата _____._____ 20_____г.</td>
+            <td class = "disptd" colspan=2 >Время _______:_______</td>
+        </tr>
+        <tr>
+            <td class = "disptd"></td>
+            <td class = "disptd"></td>
+            <td class = "disptd"></td>
+            <td class = "disptd"></td>
+            <td class = "disptd" colspan=4 rowspan=2 style = "vertical-align: top">ФИО Получателя</td>
+        </tr>
+        <tr>
+            <td class = "disptd"></td>
+            <td class = "disptd"></td>
+            <td class = "disptd"></td>
+            <td class = "disptd"></td>
+        </tr>
+        <tr>
+            <td class = "disptd"></td>
+            <td class = "disptd"></td>
+            <td class = "disptd"></td>
+            <td class = "disptd"></td>
+            <td class = "disptd" colspan=2 >Подпись Получателя</td>
+            <td class = "disptd" colspan=2 >Должность</td>
+        </tr>
+        <tr>
+            <td class = "disptd"></td>
+
+            <td class = "disptd">Всего  <%=num.Totalq %></td>
+            <td class = "disptd">Всего <%=num.Totalm %></td>
+            <td class = "disptd">Объемный вес <%=num.Totalv %></td>
+            <td class = "disptd" colspan=4 >ФИО Сотрудника Исполнителя</td>
+        </tr>
+    </table>
+    <p class= "disp_num"> Я подтверждаю, что отправления не содержат предметы, запрещенные к пересылке. С условиями пересылки согласен. С регламентом компании ознакомлен. Подпись отправителя:</p>
+    <div id="code"></div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".barcode").barcode(
+            "<%=params %>",
+            "code39",{barHeight: 25});
+    });
+$(document).ready(function () {
+    window.print();
+})
+
+</script>
+
+</body>
+
+</html>

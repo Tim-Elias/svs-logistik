@@ -1,0 +1,51 @@
+
+<nav class="navbar navbar-transparent affix"  data-offset-top="60">
+    <div class="container">
+        <div class="navbar-header ">
+
+            <a style = "margin-top: 15px;" class="navbar-brand" href="/"><img  src="/public/img/logo.png"></a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="active"><a href="/">Главная</a></li>
+                <li><a href="/about">О компании</a></li>
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Сервисы <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/requestdelivery">Вызвать курьера</a></li>
+                        <li><a href="/track">Отследить по номеру</a></li>
+                        <li><a href="/calc">Рассчет стоимости</a></li>
+                      <!--  <li><a href="#">Заключить договор</a></li> -->
+                        <li><a href="/callback">Обратная связь</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Документы <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/doc/requisites">Реквизиты</a></li>
+                        <li><a href="/doc/reglament">Регламент</a></li>
+                        <li><a href="/doc/contract">Договор</a></li>
+
+                    </ul>
+                </li>
+                <li><a href="/contacts">Контакты</a></li>
+                <% if(logget == 'true'){%>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle btn btn-default" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Кабинет <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/mydisp">Мои накладные</a></li>
+                        <li><a href="/requestdelivery">Добавить накладную</a></li>
+                        <li><a href="/calc">Рассчитать тариф</a></li>
+                        <li><a href="/templates">Шаблоны</a></li>
+                        <li><a href="/?logout=true">Выход</a></li>
+
+                    </ul>
+                </li>
+                <% }else {%>
+                <li><a href="/private" class="btn btn-default"> Вход</a></li>
+                <%}%>
+            </ul>
+        </div>
+    </div>
+</nav>
