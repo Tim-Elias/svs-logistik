@@ -152,8 +152,8 @@ router.get('/:num', function(req, res, next) {
 router.post("/", urlencodedParser, function (request, response) {
 
     const server 	= email.server.connect({
-        user:    "info-svs-logistic@mail.ru",
-        password:"svs-logisticpass",
+        user:    "info-svs-logistik@mail.ru",
+        password:"svs-logpass",
         host:    "smtp.mail.ru",
         ssl:     true
     });
@@ -246,8 +246,8 @@ router.post("/", urlencodedParser, function (request, response) {
             response.send(j.num);
             server.send({
                 text:    'Номер накладной: '+j.num+'\r'+'Город отправителя: '+params.SendCity+'\r'+'Адрес отправителя: '+params.SendAdress,
-                from:    "<info-svs-logistic@mail.ru>",
-                to:      "<info@svs-logistik.ru>, <adm@svs-logistik.ru>, <svs-logistiknsk@mail.ru>",
+                from:    "<info-svs-logistik@mail.ru>",
+                to:      "<info@svs-logistik.ru>, <adm@svs-logistik.ru>, <svs-logistiknsk@mail.ru>, <info-svs-logistik@mail.ru>",
 
                 subject: 'Новая накладная от '+ j.customer
             }, function(err, message) { console.log(err || message); });
