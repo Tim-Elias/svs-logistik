@@ -30,7 +30,7 @@ router.get('/:num', function(req, res, next) {
                 }
             //console.log("result is " + result);
             var data = result.return;
-            //console.log("data is " + data);
+            console.log("data is " + data);
             var j = JSON.parse(data);
             console.log(j);
             //var k = JSON.parse(j.val);
