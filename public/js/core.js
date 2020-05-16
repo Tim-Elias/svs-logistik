@@ -496,7 +496,7 @@ $("#tempAddDispr").bind('click',function() {
     let tempAdress = $(".tempAdressr").text();
     let tempPhone = $(".tempPhoner").text();
     let tempPerson = $(".tempPersonr").text();
-    let tempCompany = $(".tempCompany").text();
+    let tempCompany = $(".tempCompanyr").text();
     let tempAddInfo = $(".tempAddInfor").text();
     $.ajax({
         url: "/ajax/addTemp",
