@@ -252,20 +252,40 @@
 
                                 </div>
                             </div>
-                            <div class="col-sm-1">Объем (м.куб.):</div>
-                            <div class="col-sm-2"><input readonly name = "0" id="v0" type="number" value = "0.001" class="form-control" placeholder=""></div>
+                            <% if(bag=='1'){ %>
+                                <div class="col-sm-1">Термо контейнер:</div>
+                                <div class="col-sm-2 paddingbottomclass">
+                                <select class="form-control" name = "bag" id="b0">
+                                    <option selected value="Тип А 20х30х40">Тип А 20х30х40</option>
+                                    <option value="Тип Б 30х30х30">Тип Б 30х30х30</option>
+                                    <option value="Тип В 40х30х10">Тип В 40х30х10</option>
+                                </select>
+                                </div>
+                            <%}else{%>
+                                <div class="col-sm-1">Объем (м.куб.):</div>
+                                <div class="col-sm-2"><input readonly name = "0" id="v0" type="number" value = "0.001" class="form-control" placeholder=""></div>
+                            <%}%>
                             <div class="col-sm-1"><button name = "0" type="button" class="btn btn-default disabled">Удал.</button></div>
+                            
                         </div>
                     </div>
-                    <div id ="add-cargo-button" class = "row"><div class="col-sm-2"><button type="button" class="btn btn-default" onclick="addcargo()">Добавить место</button></div>
+                    <div id ="add-cargo-button" class = "row"><div class="col-sm-2">
+                        <% if(bag=='1'){ %>
+                            <button type="button" class="btn btn-default" onclick="addcargo(true)">Добавить место</button>
+                        <%}else{%>
+                            <button type="button" class="btn btn-default" onclick="addcargo(false)">Добавить место</button>
+                        <%}%>
+                    </div>
 
                         <div class="col-sm-1">Количество мест:</div>
                         <div class="col-sm-2"><input readonly id="totalq" type="number" value = "1" class="form-control" ></div>
                         <div class="col-sm-1">Итого вес (кг):</div>
                         <div class="col-sm-2"><input readonly id="totalm" type="number" value = "0.2" class="form-control"></div>
+                        
+                        
                         <div class="col-sm-1">Объемный вес (кг):</div>
                         <div class="col-sm-2"><input readonly id="totalv" type="number" value = "0.2" class="form-control"></div>
-
+                     
                     </div>
 
                 </div>
@@ -344,7 +364,15 @@
 
                         </div>
                     </div>
+                    <% if(bag=='1'){ %>
+                    <div class="form-group">
+                        <label class="control-label col-sm-3" for="sel1">Термодатчик</label>
+                        <div class="col-sm-9 paddingbottomclass">
+                            <input class="form-control"  id="thermochecker" type="checkbox">
 
+                        </div>
+                    </div>
+                    <%}%>
                     <div class="form-group">
                         <label class="control-label col-sm-3" for="sel1">С уведомлением</label>
                         <div class="col-sm-9 paddingbottomclass">
@@ -352,6 +380,8 @@
 
                         </div>
                     </div>
+
+
                     <div class="form-group">
                         <label class="control-label col-sm-3" for="sel1">Скан документа</label>
                         <div class="col-sm-9 paddingbottomclass">

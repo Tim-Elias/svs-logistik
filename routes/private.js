@@ -32,7 +32,7 @@ router.post("/", urlencodedParser, function (request, response) {
       }
       var data = result.return;
       var j;
-      //console.log(data);
+      console.log(data);
       if(data == 'f'){
         j = data;
       } else{
@@ -46,6 +46,7 @@ router.post("/", urlencodedParser, function (request, response) {
         response.cookie('hash', j.hash);
         response.cookie('alias', j.alias);
         response.cookie('pay', j.pay);
+        response.cookie('bag', j.bag);
         response.render('index',{
           logget: 'true'
         });}

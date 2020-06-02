@@ -85,7 +85,8 @@ router.get('/', function(req, res, next) {
                                     logget: req.cookies.logged,
                                     table:j.table,
                                     content:content,
-                                    pay:req.cookies.pay
+                                    pay:req.cookies.pay,
+                                    bag:req.cookies.bag
                             });
                         });
 
@@ -96,7 +97,9 @@ router.get('/', function(req, res, next) {
                                 logget: req.cookies.logged,
                                 table:j.table,
                                 content:content,
-                                pay:req.cookies.pay
+                                pay:req.cookies.pay,
+                                bag:req.cookies.bag
+                                
                         })}
                     //------------------------------------------------
                     })
@@ -182,6 +185,7 @@ router.post("/", urlencodedParser, function (request, response) {
             "Date": request.body.curDate,
             "Time": request.body.curTime,
             "Uved": request.body.Uved,
+            "thermochecker": request.body.thermochecker,
             "Scan": request.body.Scan,
             "Opasn": request.body.Opasn,
             "Podp": request.body.Podp,
@@ -214,6 +218,7 @@ router.post("/", urlencodedParser, function (request, response) {
             "Time": request.body.curTime,
             "Uved": request.body.Uved,
             "Scan": request.body.Scan,
+            "thermochecker": request.body.thermochecker,
             "Opasn": request.body.Opasn,
             "Podp": request.body.Podp,
             "UserId": '100000171',

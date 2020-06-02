@@ -118,10 +118,15 @@ function setv(name) {
     settotal();
 };
 
-function addcargo() {
+function addcargo(bag) {
 
     var n = q + 1;
-    $( "#cargo" ).append( '<div class="form-group row" id="div'+n+'"><div class="col-sm-1">Вес (кг):</div><div class="col-sm-2"><input name = "'+n+'" id="m'+n+'" type="number" class="form-control" value = "0.2" onchange="settotal()" placeholder="Вес (кг)"></div><div class="col-sm-1">Размер (см):</div><div class="col-sm-4"><div class="row"><div class="col-sm-3"><input name = "'+n+'" id="l'+n+'" type="number" class="form-control" value = "10" onchange="setv(this.name)"></div><div class="col-sm-1">Х</div><div class="col-sm-3"><input name = "'+n+'" id="w'+n+'" type="number" class="form-control" value = "20" onchange="setv(this.name)"></div><div class="col-sm-1">Х</div><div class="col-sm-3"><input name = "'+n+'" id="h'+n+'" type="number" class="form-control" value = "5" onchange="setv(this.name)"></div></div></div><div class="col-sm-1">Объем (м.куб.):</div><div class="col-sm-2"><input readonly name = "'+n+'" id="v'+n+'" type="number" value = "0.001" class="form-control" placeholder=""></div><div class="col-sm-1"><button name = "'+n+'" type="button" class="btn btn-default" onclick="removecargo(this.name)">Удал.</button></div></div>')
+    if(bag){
+        $( "#cargo" ).append( '<div class="form-group row" id="div'+n+'"><div class="col-sm-1">Вес (кг):</div><div class="col-sm-2"><input name = "'+n+'" id="m'+n+'" type="number" class="form-control" value = "0.2" onchange="settotal()" placeholder="Вес (кг)"></div><div class="col-sm-1">Размер (см):</div><div class="col-sm-4"><div class="row"><div class="col-sm-3"><input name = "'+n+'" id="l'+n+'" type="number" class="form-control" value = "10" onchange="setv(this.name)"></div><div class="col-sm-1">Х</div><div class="col-sm-3"><input name = "'+n+'" id="w'+n+'" type="number" class="form-control" value = "20" onchange="setv(this.name)"></div><div class="col-sm-1">Х</div><div class="col-sm-3"><input name = "'+n+'" id="h'+n+'" type="number" class="form-control" value = "5" onchange="setv(this.name)"></div></div></div><div class="col-sm-1">Термо контейнер:</div><div class="col-sm-2 paddingbottomclass"><select class="form-control" name = "bag" id="b'+n+'"><option selected value="Тип А 20х30х40">Тип А 20х30х40</option><option value="Тип Б 30х30х30">Тип Б 30х30х30</option><option value="Тип В 40х30х10">Тип В 40х30х10</option></select></div><div class="col-sm-1"><button name = "'+n+'" type="button" class="btn btn-default" onclick="removecargo(this.name)">Удал.</button></div></div>')
+    } else {
+        $( "#cargo" ).append( '<div class="form-group row" id="div'+n+'"><div class="col-sm-1">Вес (кг):</div><div class="col-sm-2"><input name = "'+n+'" id="m'+n+'" type="number" class="form-control" value = "0.2" onchange="settotal()" placeholder="Вес (кг)"></div><div class="col-sm-1">Размер (см):</div><div class="col-sm-4"><div class="row"><div class="col-sm-3"><input name = "'+n+'" id="l'+n+'" type="number" class="form-control" value = "10" onchange="setv(this.name)"></div><div class="col-sm-1">Х</div><div class="col-sm-3"><input name = "'+n+'" id="w'+n+'" type="number" class="form-control" value = "20" onchange="setv(this.name)"></div><div class="col-sm-1">Х</div><div class="col-sm-3"><input name = "'+n+'" id="h'+n+'" type="number" class="form-control" value = "5" onchange="setv(this.name)"></div></div></div><div class="col-sm-1">Объем (м.куб.):</div><div class="col-sm-2"><input readonly name = "'+n+'" id="v'+n+'" type="number" value = "0.001" class="form-control" placeholder=""></div><div class="col-sm-1"><button name = "'+n+'" type="button" class="btn btn-default" onclick="removecargo(this.name)">Удал.</button></div></div>')
+    
+    }
     q = n;
     list.push(n);
     settotal();
@@ -316,6 +321,7 @@ function newdispfuncbefore (){}
 function newdispfuncerror (){alert( "Ошибка :(");}
 $(document).ready(function () {
     $("#newDispSend").bind('click',function() {
+        let thermochecker;
         let SendCity = $('#SendCity').val();
         let SendAdress = $('#SendAdress').val();
         let SendPhone = $('#SendPhone').val();
@@ -340,14 +346,32 @@ $(document).ready(function () {
         let Scan = $('#Scan').is(':checked');
         let Opasn = $('#Opasn').is(':checked');
         let Podp = $('#Podp').is(':checked');
+        try {
+             thermochecker = $('#thermochecker').is(':checked');
+        } 
+        catch (err) {
+             thermochecker = false;
+            console.log(err)
+        }
+        console.log(thermochecker)
 
         var carg = [];
         $('div[id^="div"]').each(function () {
+            let b;
             let m = $(this).find('[id^="m"]').val();
             let l = $(this).find('[id^="l"]').val();
             let w = $(this).find('[id^="w"]').val();
             let h = $(this).find('[id^="h"]').val();
-            carg.push([m,l,w,h]);
+            try {
+                b = $(this).find('[id^="b"]').val();
+            } 
+            catch (err) {
+                b = null;
+                console.log(err)
+            }
+            
+
+            carg.push([m,l,w,h,b]);
         });
         carg = JSON.stringify(carg);
         $.ajax({
@@ -377,7 +401,9 @@ $(document).ready(function () {
                 Uved:Uved,
                 Scan:Scan,
                 Opasn:Opasn,
-                Podp:Podp
+                Podp:Podp,
+                thermochecker: thermochecker,
+                
             }),
             dataType: "html",
             beforeSend: newdispfuncbefore,
