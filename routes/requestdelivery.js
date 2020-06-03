@@ -111,7 +111,8 @@ router.get('/', function(req, res, next) {
         res.render('requestdelivery',{
             logget: req.cookies.logged,
             content:content,
-            pay:req.cookies.pay
+            pay:req.cookies.pay,
+            bag:""
         });
     }
         });
