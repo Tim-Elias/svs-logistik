@@ -113,7 +113,7 @@ router.get('/', function(req, res, next) {
             content:content,
             pay:req.cookies.pay,
             bag:""
-        });
+        }); 
     }
         });
 //------------------------------------------------------------
@@ -223,7 +223,7 @@ router.post("/", urlencodedParser, function (request, response) {
             "Opasn": request.body.Opasn,
             "Podp": request.body.Podp,
             "UserId": '100000171',
-            "Hash": '',
+            "Hash": '', 
             "UserIP": request.connection.remoteAddress
 
         };
