@@ -252,18 +252,31 @@
 
                                 </div>
                             </div>
-                            
+                            <!-- <% if(bag =='1'){ %>
+                                <div class="col-sm-1">Термо контейнер:</div>
+                                <div class="col-sm-2 paddingbottomclass">
+                                <select class="form-control" name = "bag" id="b0">
+                                    <option selected value=""></option> 
+                                    <option value="SP 9">SP 9</option>
+                                    <option value="SP 32">SP 32</option>
+                                    <option value="SP 60">SP 60</option>
+                                    <option value="SP 80">SP 80</option>
+                                </select>
+                                </div>
+                            <%}else{%> -->
                                 <div class="col-sm-1">Объем (м.куб.):</div>
                                 <div class="col-sm-2"><input readonly name = "0" id="v0" type="number" value = "0.001" class="form-control" placeholder=""></div>
-                            
+                            <!-- <%}%> -->
                             <div class="col-sm-1"><button name = "0" type="button" class="btn btn-default disabled">Удал.</button></div>
                             
                         </div>
                     </div>
                     <div id ="add-cargo-button" class = "row"><div class="col-sm-2">
-                       
+                        <!-- <% if(bag =='1'){ %>
+                            <button type="button" class="btn btn-default" onclick="addcargo(true)">Добавить место</button>
+                        <%}else{%> -->
                             <button type="button" class="btn btn-default" onclick="addcargo(false)">Добавить место</button>
-                        
+                        <!-- <%}%> -->
                     </div>
 
                         <div class="col-sm-1">Количество мест:</div>
