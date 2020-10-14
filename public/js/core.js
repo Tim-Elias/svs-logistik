@@ -447,12 +447,12 @@ $("#reSend").bind('click',function() {
 
 });
 //-------------------Добавлени шаблона------------------
-function templatefuncSuccess (){location.reload();
+function newtemplatefuncSuccess (){location.reload();
 }
 
 function templatefuncbefore (){}
 
-function templatefuncerror (){alert( "Ошибка :(");}
+function newtemplatefuncerror (){alert( "Ошибка :(");}
 
 $("#tempAdd").bind('click',function() {
     let tempName = $("#tempName").val();
@@ -477,8 +477,8 @@ $("#tempAdd").bind('click',function() {
         }),
         dataType: "html",
         beforeSend: templatefuncbefore,
-        error: templatefuncerror,
-        success: templatefuncSuccess
+        error: newtemplatefuncerror,
+        success: newtemplatefuncSuccess
     })
 
 
