@@ -209,38 +209,54 @@
                 <td class="disptd" colspan=2>Подпись Сотрудника</td>
             </tr>
             <tr>
+                <% if(num.dispInfo == "") {%>
                 <td class="disptd">Общее описание</td>
                 <td class="disptd">Кол-во мест</td>
                 <td class="disptd">Вес (кг)</td>
-                <td class="disptd">Габариты (см)</td>
+                <td class="disptd">Габариты (см)</td>   
+                <%} else {%>
+                <td class="disptd" colspan=4 rowspan=5><%=num.dispInfo %></td>
+                <%}%>
+                <!-- <td class="disptd">Общее описание</td>
+                <td class="disptd">Кол-во мест</td>
+                <td class="disptd">Вес (кг)</td>
+                <td class="disptd">Габариты (см)</td> -->
                 <td class="dispth" colspan=4>10. ИНФОРМАЦИЯ О ВРУЧЕНИИ ОТПРАВЛЕНИЯ</td>
             </tr>
             <tr>
+                <% if(num.dispInfo == "") {%>
                 <td class="disptd"></td>
                 <td class="disptd"></td>
                 <td class="disptd"></td>
                 <td class="disptd"></td>
+                <%}%>
                 <td class="disptd" colspan=2>Дата _____._____ 20_____г.</td>
                 <td class="disptd" colspan=2>Время _______:_______</td>
             </tr>
             <tr>
+                <% if(num.dispInfo == "") {%>
                 <td class="disptd"></td>
                 <td class="disptd"></td>
                 <td class="disptd"></td>
                 <td class="disptd"></td>
+                <%}%>
                 <td class="disptd" colspan=4 rowspan=2 style="vertical-align: top">ФИО Получателя</td>
             </tr>
             <tr>
+                <% if(num.dispInfo == "") {%>
                 <td class="disptd"></td>
                 <td class="disptd"></td>
                 <td class="disptd"></td>
                 <td class="disptd"></td>
+                <%}%>
             </tr>
             <tr>
+                <% if(num.dispInfo == "") {%>
                 <td class="disptd"></td>
                 <td class="disptd"></td>
                 <td class="disptd"></td>
                 <td class="disptd"></td>
+                <%}%>
                 <td class="disptd" colspan=2>Подпись Получателя</td>
                 <td class="disptd" colspan=2>Должность</td>
             </tr>
@@ -379,39 +395,55 @@
                 <td class="disptd" colspan=2>ФИО Сотрудника</td>
                 <td class="disptd" colspan=2>Подпись Сотрудника</td>
             </tr>
-            <tr>
-                <td class="disptd">Общее описание</td>
-                <td class="disptd">Кол-во мест</td>
-                <td class="disptd">Вес (кг)</td>
-                <td class="disptd">Габариты (см)</td>
-                <td class="dispth" colspan=4>10. ИНФОРМАЦИЯ О ВРУЧЕНИИ ОТПРАВЛЕНИЯ</td>
-            </tr>
-            <tr>
-                <td class="disptd"></td>
-                <td class="disptd"></td>
-                <td class="disptd"></td>
-                <td class="disptd"></td>
-                <td class="disptd" colspan=2>Дата _____._____ 20_____г.</td>
-                <td class="disptd" colspan=2>Время _______:_______</td>
-            </tr>
-            <tr>
-                <td class="disptd"></td>
-                <td class="disptd"></td>
-                <td class="disptd"></td>
-                <td class="disptd"></td>
-                <td class="disptd" colspan=4 rowspan=2 style="vertical-align: top">ФИО Получателя</td>
-            </tr>
-            <tr>
-                <td class="disptd"></td>
-                <td class="disptd"></td>
-                <td class="disptd"></td>
-                <td class="disptd"></td>
-            </tr>
-            <tr>
-                <td class="disptd"></td>
-                <td class="disptd"></td>
-                <td class="disptd"></td>
-                <td class="disptd"></td>
+            <tr> 
+                <% if(num.dispInfo == "") {%>
+                    <td class="disptd">Общее описание</td>
+                    <td class="disptd">Кол-во мест</td>
+                    <td class="disptd">Вес (кг)</td>
+                    <td class="disptd">Габариты (см)</td>   
+                    <%} else {%>
+                    <td class="disptd" colspan=4 rowspan=5><%=num.dispInfo %></td>
+                    <%}%>
+                    <!-- <td class="disptd">Общее описание</td>
+                    <td class="disptd">Кол-во мест</td>
+                    <td class="disptd">Вес (кг)</td>
+                    <td class="disptd">Габариты (см)</td> -->
+                    <td class="dispth" colspan=4>10. ИНФОРМАЦИЯ О ВРУЧЕНИИ ОТПРАВЛЕНИЯ</td>
+                </tr>
+                <tr>
+                    <% if(num.dispInfo == "") {%>
+                    <td class="disptd"></td>
+                    <td class="disptd"></td>
+                    <td class="disptd"></td>
+                    <td class="disptd"></td>
+                    <%}%>
+                    <td class="disptd" colspan=2>Дата _____._____ 20_____г.</td>
+                    <td class="disptd" colspan=2>Время _______:_______</td>
+                </tr>
+                <tr>
+                    <% if(num.dispInfo == "") {%>
+                    <td class="disptd"></td>
+                    <td class="disptd"></td>
+                    <td class="disptd"></td>
+                    <td class="disptd"></td>
+                    <%}%>
+                    <td class="disptd" colspan=4 rowspan=2 style="vertical-align: top">ФИО Получателя</td>
+                </tr>
+                <tr>
+                    <% if(num.dispInfo == "") {%>
+                    <td class="disptd"></td>
+                    <td class="disptd"></td>
+                    <td class="disptd"></td>
+                    <td class="disptd"></td>
+                    <%}%>
+                </tr>
+                <tr>
+                    <% if(num.dispInfo == "") {%>
+                    <td class="disptd"></td>
+                    <td class="disptd"></td>
+                    <td class="disptd"></td>
+                    <td class="disptd"></td>
+                    <%}%>
                 <td class="disptd" colspan=2>Подпись Получателя</td>
                 <td class="disptd" colspan=2>Должность</td>
             </tr>

@@ -339,7 +339,7 @@ $(document).ready(function () {
         let PayType = $('#PayType').val();
         let InsurValue = $('#InsurValue').val();
         let COD = $('#COD').val();
-
+        let dispInfo = $('#dispInfo').val();
         let curDate = $('#curDate').val();
         let curTime = $('#curTime').val();
         let Uved = $('#Uved').is(':checked');
@@ -395,6 +395,7 @@ $(document).ready(function () {
                 pay:pay,
                 InsurValue:InsurValue,
                 COD:COD,
+                dispInfo:dispInfo,
                 carg:carg,
                 curDate:curDate,
                 curTime:curTime,

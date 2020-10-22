@@ -182,7 +182,7 @@ router.post("/", urlencodedParser, function (request, response) {
             "InsurValue": request.body.InsurValue,
             "COD": request.body.COD,
             "cargo": request.body.carg,
-
+            "dispInfo": request.body.dispInfo,
             "Date": request.body.curDate,
             "Time": request.body.curTime,
             "Uved": request.body.Uved,
@@ -214,7 +214,7 @@ router.post("/", urlencodedParser, function (request, response) {
             "InsurValue": request.body.InsurValue,
             "COD": request.body.COD,
             "cargo": request.body.carg,
-
+            "dispInfo": request.body.dispInfo,
             "Date": request.body.curDate,
             "Time": request.body.curTime,
             "Uved": request.body.Uved,
@@ -228,7 +228,7 @@ router.post("/", urlencodedParser, function (request, response) {
 
         };
     }
-    console.log("params");
+    console.log("cur_params");
     console.log(params);
     var paramsOne = JSON.stringify(params);
     var args = {Param:paramsOne};
