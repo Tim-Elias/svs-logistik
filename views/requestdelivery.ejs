@@ -16,16 +16,20 @@
         })
 
         $('#tabFilter').change(function(){
-            console.log($('#tabFilter').val());
+            const tabFilter = $('#tabFilter').val();
+            console.log(tabFilter);
             var tabChildren = document.getElementById("tabBody").children;
             console.log(tabChildren);
             
             for (let index = 0; index < tabChildren.length; index++) {
                 const element = tabChildren[index];
-                if (false){
+                if (tabFilter === ""){
+
                     element.hidden = false
                     console.log(element)
-                    console.log("false")
+                    console.log(element.children[0].innerHTML)
+
+                    
                     
                 }else{
                     element.hidden = true
