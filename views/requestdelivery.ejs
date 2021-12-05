@@ -17,9 +17,9 @@
 
         $('#tabFilter').change(function(){
             console.log($('#tabFilter').val());
-            var tabChildren = $('#tab').children;
+            var tabChildren = $('#tblSpravIn');
             console.log(tabChildren);
-
+            console.log(tabChildren.children);
 
         })
     })
@@ -97,7 +97,7 @@
                                     <th></th>
                                 </tr>
                                 <% table.forEach(function(tab) { %>
-                                <tr class="tblSpravIn" id="tab">
+                                <tr class="tblSpravIn" id="tblSpravIn">
                                     <td name="ref"><%=tab.ref %></td>
                                     <td name="city"><%=tab.city %></td>
                                     <td name="address"><%=tab.address %></td>
