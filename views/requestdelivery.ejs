@@ -15,32 +15,33 @@
             }
         })
 
-        $('#tabFilter').change(function(){
-            const tabFilter = $('#tabFilter').val().toUpperCase();
-            console.log(tabFilter);
-            var tabChildren = document.getElementById("tabBody").children;
-            console.log(tabChildren);
-            
-            for (let index = 0; index < tabChildren.length; index++) {
-                const element = tabChildren[index];
-                if (tabFilter === "" || element.children[0].innerHTML.toUpperCase().indexOf(tabFilter)!== -1){
-
+        $('#tabFilterSend').change(function(){
+            const tabFilterSend = $('#tabFilterSend').val().toUpperCase();
+            var tabChildrenSend = document.getElementById("tabBodySend").children;
+            for (let index = 0; index < tabChildrenSend.length; index++) {
+                const element = tabChildrenSend[index];
+                if (tabFilterSend === "" || element.children[0].innerHTML.toUpperCase().indexOf(tabFilterSend)!== -1){
                     element.hidden = false
-                   
-                    
                 }else{
                     element.hidden = true
-                    // console.log(element)
-                    // console.log("true")
                 }
             }
-
-          
-            
-            
-            // console.log(tabChildren.children);
-
         })
+
+        $('#tabFilterRec').change(function(){
+            const tabFilterRec = $('#tabFilterRec').val().toUpperCase();
+            var tabChildrenRec = document.getElementById("tabBodyRec").children;
+            for (let index = 0; index < tabChildrenRec.length; index++) {
+                const element = tabChildrenRec[index];
+                if (tabFilterRec === "" || element.children[0].innerHTML.toUpperCase().indexOf(tabFilterRec)!== -1){
+                    element.hidden = false
+                }else{
+                    element.hidden = true
+                }
+            }
+        })
+
+
     })
        
     </script>
@@ -107,7 +108,7 @@
                             <table id="directory" class = "table dispatch table-striped table-hover" >
                                 <thead>
                                 <tr>
-                                    <th><input id=tabFilter placeholder="Поиск..." /></th>
+                                    <th><input id=tabFilterSend placeholder="Поиск..." /></th>
                                     <th>Город</th>
                                     <th>Адрес</th>
                                     <th style="display: none">Телефон</th>
@@ -117,7 +118,7 @@
                                     <th></th>
                                 </tr>
                                 </thead>
-<tbody id="tabBody">
+<tbody id="tabBodySend">
                                 <% table.forEach(function(tab) { %>
                                 <tr class="tblSpravIn">
                                     <td name="ref"><%=tab.ref %></td>
@@ -192,8 +193,9 @@
                     <div class="row">
                         <div id="rec" class="collapse">
                             <table class = "table dispatch table-striped table-hover" >
+                               <thead>
                                 <tr>
-                                    <th>Наименование</th>
+                                    <th><input id=tabFilterRec placeholder="Поиск..." /></th>
                                     <th>Город</th>
                                     <th>Адрес</th>
                                     <th style="display: none">Телефон</th>
@@ -202,7 +204,8 @@
                                     <th style="display: none">Доп. информация</th>
                                     <th></th>
                                 </tr>
-
+</thead>
+<tbody id="tabBodyRec">
                                 <% table.forEach(function(tab) { %>
                                 <tr class="tblSpravTo">
                                     <td name="ref"><%=tab.ref %></td>
@@ -214,7 +217,8 @@
                                     <td name="addinfo" style="display: none"><%=tab.addinfo %></td>
                                 </tr>
                                 <% }); %>
-                            </table>
+                            </tbody>
+                        </table>
                         </div>
 
                     </div>
