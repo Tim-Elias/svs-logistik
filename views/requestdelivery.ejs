@@ -18,6 +18,7 @@
         $('#tabFilter').change(function(){
             console.log($('#tabFilter').val());
             var tabChildren = document.getElementById("tabBody").children;
+            console.log(tabChildren);
             tabChildren.forEach(element => {
                 if (true){
                     element.hidden = false
@@ -32,7 +33,7 @@
                 
             });
             
-            console.log(tabChildren);
+            
             // console.log(tabChildren.children);
 
         })
