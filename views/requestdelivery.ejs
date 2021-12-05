@@ -14,6 +14,10 @@
                 $('.pay').addClass('hiddenPay')
             }
         })
+
+        $('#tabFilter').change(function(){
+            console.log($('#tabFilter').val())
+        })
     })
        
     </script>
@@ -79,7 +83,7 @@
                         <div id="send" class="collapse">
                             <table id="directory" class = "table dispatch table-striped table-hover" >
                                 <tr>
-                                    <th><input id=tabFilter placeholder="Введите значение для поиска" /></th>
+                                    <th><input id=tabFilter placeholder="Поиск..." /></th>
                                     <th>Город</th>
                                     <th>Адрес</th>
                                     <th style="display: none">Телефон</th>
@@ -89,7 +93,7 @@
                                     <th></th>
                                 </tr>
                                 <% table.forEach(function(tab) { %>
-                                <tr class="tblSpravIn">
+                                <tr class="tblSpravIn" id="tab">
                                     <td name="ref"><%=tab.ref %></td>
                                     <td name="city"><%=tab.city %></td>
                                     <td name="address"><%=tab.address %></td>
