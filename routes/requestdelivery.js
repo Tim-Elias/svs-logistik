@@ -86,8 +86,7 @@ router.get('/', function(req, res, next) {
                                     table:j.table,
                                     content:content,
                                     pay:req.cookies.pay,
-                                    bag:req.cookies.bag,
-                                    tabFilter: "НСК"
+                                    bag:req.cookies.bag
                             });
                         });
 
@@ -99,8 +98,7 @@ router.get('/', function(req, res, next) {
                                 table:j.table,
                                 content:content,
                                 pay:req.cookies.pay,
-                                bag:req.cookies.bag,
-                                tabFilter: "НСК"
+                                bag:req.cookies.bag
                                 
                         })}
                     //------------------------------------------------
@@ -114,8 +112,7 @@ router.get('/', function(req, res, next) {
             logget: req.cookies.logged,
             content:content,
             pay:req.cookies.pay,
-            bag:"",
-            tabFilter: "НСК"
+            bag:""
         }); 
     }
         });

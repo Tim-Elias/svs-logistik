@@ -88,7 +88,7 @@
                                     <th style="display: none">Доп. информация</th>
                                     <th></th>
                                 </tr>
-                                <% table.filter((element) => { tabFilter == "" || element.ref.indexOf(tabFilter) !== -1  }).forEach(function(tab) { %>
+                                <% table.forEach(function(tab) { %>
                                 <tr class="tblSpravIn">
                                     <td name="ref"><%=tab.ref %></td>
                                     <td name="city"><%=tab.city %></td>
