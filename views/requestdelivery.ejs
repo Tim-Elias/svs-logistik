@@ -17,9 +17,23 @@
 
         $('#tabFilter').change(function(){
             console.log($('#tabFilter').val());
-            var tabChildren = document.getElementById("tabBody");
+            var tabChildren = document.getElementById("tabBody").children;
+            tabChildren.forEach(element => {
+                if (true){
+                    element.hidden = false
+                    console.log(element)
+                    console.log("false")
+                    
+                }else{
+                    element.hidden = true
+                    console.log(element)
+                    console.log("true")
+                }
+                
+            });
+            
             console.log(tabChildren);
-            console.log(tabChildren.children);
+            // console.log(tabChildren.children);
 
         })
     })
