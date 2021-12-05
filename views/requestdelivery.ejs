@@ -16,25 +16,22 @@
         })
 
         $('#tabFilter').change(function(){
-            const tabFilter = $('#tabFilter').val();
+            const tabFilter = $('#tabFilter').val().toUpperCase();
             console.log(tabFilter);
             var tabChildren = document.getElementById("tabBody").children;
             console.log(tabChildren);
             
             for (let index = 0; index < tabChildren.length; index++) {
                 const element = tabChildren[index];
-                if (tabFilter === ""){
+                if (tabFilter === "" || element.children[0].innerHTML.toUpperCase().indexOf(tabFilter)!== -1){
 
                     element.hidden = false
-                    console.log(element)
-                    console.log(element.children[0].innerHTML)
-
-                    
+                   
                     
                 }else{
                     element.hidden = true
-                    console.log(element)
-                    console.log("true")
+                    // console.log(element)
+                    // console.log("true")
                 }
             }
 
