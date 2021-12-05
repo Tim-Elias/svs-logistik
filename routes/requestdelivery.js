@@ -86,7 +86,8 @@ router.get('/', function(req, res, next) {
                                     table:j.table,
                                     content:content,
                                     pay:req.cookies.pay,
-                                    bag:req.cookies.bag
+                                    bag:req.cookies.bag,
+                                    tabFilter: "НСК"
                             });
                         });
 
