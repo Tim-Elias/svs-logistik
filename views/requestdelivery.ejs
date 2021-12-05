@@ -17,7 +17,7 @@
 
         $('#tabFilter').change(function(){
             console.log($('#tabFilter').val());
-            var tabChildren = $('#tblSpravIn');
+            var tabChildren = $('#tabBody');
             console.log(tabChildren);
             console.log(tabChildren.children);
 
@@ -86,6 +86,7 @@
 
                         <div id="send" class="collapse">
                             <table id="directory" class = "table dispatch table-striped table-hover" >
+                                <thead>
                                 <tr>
                                     <th><input id=tabFilter placeholder="Поиск..." /></th>
                                     <th>Город</th>
@@ -96,8 +97,10 @@
                                     <th style="display: none">Доп. информация</th>
                                     <th></th>
                                 </tr>
+                                </thead>
+<tbody id="tabBody">
                                 <% table.forEach(function(tab) { %>
-                                <tr class="tblSpravIn" id="tblSpravIn">
+                                <tr class="tblSpravIn">
                                     <td name="ref"><%=tab.ref %></td>
                                     <td name="city"><%=tab.city %></td>
                                     <td name="address"><%=tab.address %></td>
@@ -107,7 +110,7 @@
                                     <td name="addinfo" style="display: none"><%=tab.addinfo %></td>
                                 </tr>
                                 <% }); %>
-
+                            </tbody>
                             </table>
                         </div>
                     </div>
