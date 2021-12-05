@@ -114,7 +114,8 @@ router.get('/', function(req, res, next) {
             logget: req.cookies.logged,
             content:content,
             pay:req.cookies.pay,
-            bag:""
+            bag:"",
+            tabFilter: "НСК"
         }); 
     }
         });
