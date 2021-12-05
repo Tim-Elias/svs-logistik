@@ -20,7 +20,7 @@
             var tabChildrenSend = document.getElementById("tabBodySend").children;
             for (let index = 0; index < tabChildrenSend.length; index++) {
                 const element = tabChildrenSend[index];
-                if (tabFilterSend === "" || element.children[0].innerHTML.toUpperCase().indexOf(tabFilterSend)!== -1){
+                if (tabFilterSend === "" || element.children[0].innerHTML.toUpperCase().indexOf(tabFilterSend)!== -1 || element.children[1].innerHTML.toUpperCase().indexOf(tabFilterSend)!== -1){
                     element.hidden = false
                 }else{
                     element.hidden = true
@@ -33,7 +33,7 @@
             var tabChildrenRec = document.getElementById("tabBodyRec").children;
             for (let index = 0; index < tabChildrenRec.length; index++) {
                 const element = tabChildrenRec[index];
-                if (tabFilterRec === "" || element.children[0].innerHTML.toUpperCase().indexOf(tabFilterRec)!== -1){
+                if (tabFilterRec === "" || element.children[0].innerHTML.toUpperCase().indexOf(tabFilterRec)!== -1 || element.children[1].innerHTML.toUpperCase().indexOf(tabFilterRec)!== -1){
                     element.hidden = false
                 }else{
                     element.hidden = true
