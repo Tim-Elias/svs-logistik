@@ -118,6 +118,77 @@ function setv(name) {
     settotal();
 };
 
+// function setthermo(name) {
+
+//     var listThermo = [
+//         {   name: 5,
+//             l:   35,
+//             w:  28,
+//             h:  32,
+//             m: 2.5,
+//             v: (35*28*32*0.000001).toFixed(4)
+//         },
+//         {   name: 9,
+//             l:   41,
+//             w:  41,
+//             h:  42,
+//             m: 4,
+//             v: (35*28*32*0.000001).toFixed(4)
+//         },
+//         {   name: 20,
+//             l:   50,
+//             w:  39,
+//             h:  45,
+//             m: 4.3,
+//             v: (35*28*32*0.000001).toFixed(4)
+//         }, {   name: 32,
+//             l:   53,
+//             w:  52,
+//             h:  52,
+//             m: 5,
+//             v: (35*28*32*0.000001).toFixed(4)
+//         }, {   name: 50,
+//             l:   65,
+//             w:  45,
+//             h:  51,
+//             m: 5.9,
+//             v: (35*28*32*0.000001).toFixed(4)
+//         }, {   name: 80,
+//             l:   78,
+//             w:  52,
+//             h:  58,
+//             m: 6,
+//             v: (35*28*32*0.000001).toFixed(4)
+//         }, {   name: 100,
+//             l:   95,
+//             w:  59,
+//             h:  65,
+//             m: 7,
+//             v: (35*28*32*0.000001).toFixed(4)
+//         }
+//     ]
+// // console.log(name)
+//     var curContainer = document.getElementById('container' + name).value
+//     // console.log(curContainer)
+//     var curThermo = listThermo.filter(el => {
+//     //    console.log(el)
+//        if (el.name == curContainer) {
+//        return el
+//        }
+//     })[0]
+//     // console.log(curThermo)
+
+//     document.getElementById('tl'+name).value = curThermo.l;
+//     document.getElementById('tw'+name).value = curThermo.w;
+//     document.getElementById('th'+name).value = curThermo.h;
+//     document.getElementById('tm'+name).value = curThermo.m;
+
+
+
+
+//     settotal();
+// };
+
 function addcargo(bag) {
 
     var n = q + 1;
@@ -131,6 +202,17 @@ function addcargo(bag) {
     list.push(n);
     settotal();
 };
+
+// function addthermo() {
+
+//     var n = q + 1;
+    
+//         $( "#thermo" ).append( '<div class="form-group row" id = "div'+n+'"><div class="col-sm-2">Тип термоконтейнера:</div><div class="col-sm-2"><select class="form-control" name = "Thermo" id="Thermo"><option value=5>SAFEPACK SP-5</option><option value=9>SAFEPACK SP-9</option><option value=20>SAFEPACK SP-20</option><option value=32>SAFEPACK SP-32</option><option value=50>SAFEPACK SP-50</option><option value=80>SAFEPACK SP-80</option><option value=100>SAFEPACK SP-100</option></select></div><div class="col-sm-1">Вес:</div><div class="col-sm-1"><input readonly name = "0" id="m0" type="number" class="form-control" value = "0.2" placeholder="Вес (кг)" onchange="settotal()"></div><div class="col-sm-1">Размер (см):</div><div class="col-sm-4"><div class="row"><div class="col-sm-3"><input readonly name = "0" id="l0" type="number" class="form-control" value = "10" onchange="setv(this.name)"></div><div class="col-sm-1">Х</div><div class="col-sm-3"><input readonly name = "0" id="w0" type="number" class="form-control" value = "20" onchange="setv(this.name)"></div><div class="col-sm-1">Х</div><div class="col-sm-3"><input readonly name = "0" id="h0" type="number" class="form-control" value = "5" onchange="setv(this.name)"></div></div></div><div class="col-sm-1"><button name = "0" type="button" class="btn btn-default disabled">Удал.</button></div></div>')
+    
+//     q = n;
+//     list.push(n);
+//     settotal();
+// };
 
 function removecargo(name) {
 
@@ -227,8 +309,11 @@ $(document).ready(function() {
     let availableTags = citys;
 
     $('.complite').autocomplete({
-        source: availableTags
-    })
+        source: availableTags,
+        change: function(event,ui){
+            $(this).val((ui.item ? ui.item.value : ""));
+          }
+    })    
 });
 
 $(document).on('dblclick', '.tblSpravIn', function() {
@@ -353,7 +438,7 @@ $(document).ready(function () {
              thermochecker = false;
             console.log(err)
         }
-        console.log(thermochecker)
+        // console.log(thermochecker)
 
         var carg = [];
         $('div[id^="div"]').each(function () {
