@@ -403,7 +403,8 @@ function newdispfuncSuccess (data){
 
 function newdispfuncbefore (){}
 
-function newdispfuncerror (){alert( "Ошибка :(");}
+function newdispfuncerror (err){alert( "Ошибка :(" + err);}
+
 $(document).ready(function () {
     $("#newDispSend").bind('click',function() {
         let thermochecker;
@@ -459,6 +460,15 @@ $(document).ready(function () {
             carg.push([m,l,w,h,b]);
         });
         carg = JSON.stringify(carg);
+        if (SendCity === ""){
+            alert("Город отправителя не заполнен")
+            return
+        } 
+
+        if (RecCity === ""){
+            alert("Город получателя не заполнен")
+            return
+        } 
         $.ajax({
             url: "/requestdelivery",
             type: "POST",
