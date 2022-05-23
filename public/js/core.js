@@ -308,7 +308,7 @@ function addZero(i) {
 $(document).ready(function() {
     let availableTags = citys;
 
-    $('.complite').autocomplete({
+    $('.city').autocomplete({
         source: availableTags,
         change: function(event,ui){
             $(this).val((ui.item ? ui.item.value : ""));

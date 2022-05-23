@@ -15,6 +15,17 @@
             }
         })
 
+        $('#Thermo').change(function(){
+            if($('#Thermo').val()==0){
+                $('#cargo-body').removeClass('hiddenPay')
+                $('#thermo-body').addClass('hiddenPay')
+                
+            }else{
+                $('#cargo-body').addClass('hiddenPay')
+                $('#thermo-body').removeClass('hiddenPay')
+            }
+        })
+
         $('#tabFilterSend').change(function(){
             const tabFilterSend = $('#tabFilterSend').val().toUpperCase();
             var tabChildrenSend = document.getElementById("tabBodySend").children;
@@ -141,7 +152,7 @@
                     <div class="form-group">
                         <label class="control-label col-sm-4" for="SendCity">Город:</label>
                         <div class="col-sm-8 paddingbottomclass">
-                            <input value="<%=content.SendCity %>" name = "SendCity" id="SendCity" type="text" class="form-control complite" placeholder="Нужно заполнить...">
+                            <input value="<%=content.SendCity %>" name = "SendCity" id="SendCity" type="text" class="form-control city complite" placeholder="Нужно заполнить...">
                         </div>
                     </div>
                     <div class="form-group">
@@ -228,7 +239,7 @@
                     <div class="form-group">
                         <label class="control-label col-sm-4" for="SendCity">Город:</label>
                         <div class="col-sm-8 paddingbottomclass">
-                            <input value="<%=content.RecCity %>" name = "RecCity" id="RecCity" type="text" class="form-control complite" placeholder="Нужно заполнить...">
+                            <input value="<%=content.RecCity %>" name = "RecCity" id="RecCity" type="text" class="form-control city complite" placeholder="Нужно заполнить...">
                         </div>
                     </div>
                     <div class="form-group">
@@ -265,8 +276,35 @@
             </div>
         </div>
 
+        <!-- <div id="geninfo" class="col-sm-12 col-xs-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">Терморежим</div>
+            <div class="panel-body">
+
+                <div class="form-group">
+                    <label class="control-label col-sm-3" for="sel1">Терморежим:</label>
+                    <div class="col-sm-9 paddingbottomclass">
+                        <select class="form-control" name = "Thermo" id="Thermo">
+                            <option selected value=0>Не требуется</option>
+                            <option value=1>+2 +8</option>
+                            <option value=2>+15 +25</option>
+                            <option value=3>+2 +25</option>
+                            <option value=4>-15 -20</option>
+                            <option value=5>-60 -80</option>
+                        </select>
+                    </div>
+                </div>
+                
+
+            </div>
+
+        </div>
+    </div> -->
+
+
         <div id="geninfo" class="col-sm-12 col-xs-12">
-            <div class="panel panel-default">
+            
+            <div id="cargo-body" class="panel panel-default">
                 <div class="panel-heading">Грузы</div>
                 <div class="panel-body">
 
@@ -314,6 +352,71 @@
                 </div>
 
             </div>
+
+
+            <!-- <div id="thermo-body" class="panel panel-default hiddenPay">
+                <div class="panel-heading">Термоконтейнеры</div>
+                <div class="panel-body">
+
+                    <div  id="thermo">
+                        <div class="form-group row" id = "div0">
+                            <div class="col-sm-2">Тип термоконтейнера:</div>
+                                <div class="col-sm-2">
+                                    <select class="form-control" name = "0" id="container0" onchange="setthermo(this.name)">
+                                        <option value=5>SAFEPACK SP-5</option>
+                                        <option value=9>SAFEPACK SP-9</option>
+                                        <option value=20>SAFEPACK SP-20</option>
+                                        <option value=32>SAFEPACK SP-32</option>
+                                        <option value=50>SAFEPACK SP-50</option>
+                                        <option value=80>SAFEPACK SP-80</option>
+                                        <option value=100>SAFEPACK SP-100</option>
+                                    </select>
+                                </div>
+                            
+                            
+                            <div class="col-sm-1">Вес:</div>
+                            <div class="col-sm-1"><input readonly name = "0" id="tm0" type="number" class="form-control" value = "0.2" placeholder="Вес (кг)" ></div>
+                            <div class="col-sm-1">Размер (см):</div>
+                            <div class="col-sm-4">
+
+                                <div class="row">
+                                    <div class="col-sm-3"><input readonly name = "0" id="tl0" type="number" class="form-control" value = "10" ></div>
+                                    <div class="col-sm-1">Х</div>
+                                    <div class="col-sm-3"><input readonly name = "0" id="tw0" type="number" class="form-control" value = "20" ></div>
+                                    <div class="col-sm-1">Х</div>
+                                    <div class="col-sm-3"><input readonly name = "0" id="th0" type="number" class="form-control" value = "5" ></div>
+
+                                </div>
+                            </div>
+                            
+                                
+                            <div class="col-sm-1"><button name = "0" type="button" class="btn btn-default disabled">Удал.</button></div>
+                            
+                        </div>
+                    </div>
+                    <div id ="add-cargo-button" class = "row"><div class="col-sm-3">
+                       
+                            <button type="button" class="btn btn-default" onclick="addthermo(false)">Добавить термоконтейнер</button>
+                        
+                    </div>
+
+                        <div class="col-sm-1">Количество мест:</div>
+                        <div class="col-sm-2"><input readonly id="totalq" type="number" value = "1" class="form-control" ></div>
+                        <div class="col-sm-1">Итого вес (кг):</div>
+                        <div class="col-sm-2"><input readonly id="totalm" type="number" value = "0.2" class="form-control"></div>
+                        
+                        
+                        <div class="col-sm-1">Объемный вес (кг):</div>
+                        <div class="col-sm-2"><input readonly id="totalv" type="number" value = "0.2" class="form-control"></div>
+                     
+                    </div>
+
+                </div>
+
+            </div> -->
+
+            
+
             <div class="panel panel-default">
                 <div class="panel-heading">Данные об отправлении</div>
                 <div class="panel-body">
@@ -349,9 +452,9 @@
                                 <option selected value="Стандарт">Стандарт</option>
                                 <option value="Экспресс">Экспресс</option>
                                 <option value="СуперЭкспресс">Супер Экспресс</option>
+                                <option value="ЭкономНаземныйТранспорт">Эконом (Наземный транспорт)</option>
                             </select>
                         </div>
-
                     </div>
 
                     <div class="form-group">
@@ -366,7 +469,7 @@
                             </select>
                         </div>
                     </div>
-		<% if(pay !== undefined){%>
+		    <% if(pay !== undefined){%>
                     <% if(pay.length !==0){ %>
                     <div class="form-group pay hiddenPay">
                         <label class="control-label col-sm-3" for="sel1">Плательщик:</label>
@@ -379,7 +482,7 @@
                         </div>
                     </div>
                     <%}%>
-			<%}%>
+			    <%}%>
                     <div class="form-group">
                         <label class="control-label col-sm-3" for="sel1">Страховая стоимость:</label>
                         <div class="col-sm-9 paddingbottomclass">
@@ -395,13 +498,15 @@
                         </div>
                     </div>
                    
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <label class="control-label col-sm-3" for="sel1">С уведомлением</label>
                         <div class="col-sm-9 paddingbottomclass">
                             <input class="form-control"  id="Uved" type="checkbox">
 
                         </div>
-                    </div>
+                    </div> -->
+
+                    
 
 
                     <div class="form-group">
@@ -411,13 +516,15 @@
 
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label class="control-label col-sm-3" for="sel1">Опасный груз</label>
+                    <!-- <div class="form-group">
+                        <label class="control-label col-sm-3" for="sel1">Терморежим</label>
                         <div class="col-sm-9 paddingbottomclass">
-                            <input class="form-control"  id="Opasn" type="checkbox">
+                            <input class="form-control"  id="thermo" type="checkbox">
 
                         </div>
-                    </div>
+                    </div> -->
+
+                    
                     <div class="form-group">
                         <label class="control-label col-sm-3" for="sel1">Вернуть подписанный</label>
                         <div class="col-sm-9 paddingbottomclass">
