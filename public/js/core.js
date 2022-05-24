@@ -305,11 +305,22 @@ function addZero(i) {
     return (i < 10)? "0" + i: i;
 }
 
+
+
 $(document).ready(function() {
     let availableTags = citys;
 
     $('.city').autocomplete({
-        source: availableTags,
+        source: function(req, responseFn) {
+            var re = $.ui.autocomplete.escapeRegex(req.term);
+            var matcher = new RegExp( "^" + re, "i" );
+            var a = $.grep( availableTags, function(item,index){
+                return matcher.test(item);
+            });
+            responseFn( a );
+        }
+    ,
+        
         change: function(event,ui){
             $(this).val((ui.item ? ui.item.value : ""));
           }
