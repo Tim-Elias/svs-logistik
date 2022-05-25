@@ -414,7 +414,7 @@ function newdispfuncSuccess (data){
 
 function newdispfuncbefore (){}
 
-function newdispfuncerror (err){alert( "Ошибка :(" + err);}
+function newdispfuncerror (err){alert( "Ошибка :(" + JSON.stringify(err,null,' '))}
 
 $(document).ready(function () {
     $("#newDispSend").bind('click',function() {
