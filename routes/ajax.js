@@ -1,8 +1,9 @@
+const url = 'http://91.208.253.246:21123/cs/maws.1cws?wsdl'
+
 const express = require('express');
 const router = express.Router();
 const bodyParser = require("body-parser");
 const soap = require('soap');
-const url = 'http://5.59.125.35/cs/maws.1cws?wsdl';
 const urlencodedParser = bodyParser.urlencoded({extended: false});
 
 router.post("/tracknum", urlencodedParser, function (request, response) {
