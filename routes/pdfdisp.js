@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const soap = require('soap');
-const url = 'http://91.208.253.246:21123/cs/maws.1cws?wsdl'
+const url = 'http://5.59.125.35/cs/maws.1cws?wsdl'
 
 router.get('/:num', function(req, res, next) {
     if(req.cookies.logged == 'true') {
