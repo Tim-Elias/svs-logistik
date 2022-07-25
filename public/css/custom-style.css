@@ -19,6 +19,20 @@ h1,h2,h3,h4,h5,h6{
 
 /* ---Loader--- */
 
+.temp-container{
+    padding-top: 25px;
+}
+
+.temp-navbar{
+    margin-top: 90px;
+}
+
+.temp-banner{
+    text-align: center;
+    padding-top: 10px;
+    font-size: 18px;
+}
+
 .loaders {
     width: 100%;
     box-sizing: border-box;
