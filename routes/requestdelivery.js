@@ -157,7 +157,7 @@ router.post("/", urlencodedParser, function (request, response) {
 
     const server 	= email.server.connect({
         user:    "info-svs-logistik@mail.ru",
-        password:"L@injUgBJTt.J94",
+        password:"eP0zu7jRWuCVdGMSdhLX", //eP0zu7jRWuCVdGMSdhLX
         host:    "smtp.mail.ru",
         ssl:     true
     });
