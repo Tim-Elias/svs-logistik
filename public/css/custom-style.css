@@ -588,6 +588,7 @@ body {
     height: 100%;
 }
 .content {
+    padding-top: 100px;
     flex: 1 0 auto;
 }
 .footer {

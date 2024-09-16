@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const soap = require('soap');
-const url = 'http://5.59.125.35/cs/maws.1cws?wsdl'
+const url = 'http://srv.svs-logistik.ru/cs/maws.1cws?wsdl'
 
 router.get('/:num', function(req, res, next) {
 
@@ -13,10 +13,7 @@ router.get('/:num', function(req, res, next) {
     };
 
     var paramsOne = JSON.stringify(params);
-    //.log("ParamsOne is"+paramsOne);
-
     var args = {param1:paramsOne};
-    //console.log(args);
 
     soap.createClient(url, function(err, client) {
         if (err){console.log("first err is " + err)};
@@ -28,12 +25,8 @@ router.get('/:num', function(req, res, next) {
                 if(result.return == 'ws_err'){
                     res.render('err', { logget: req.cookies.logged})
                 }
-            //console.log("result is " + result);
             var data = result.return;
-            console.log("data is " + data);
             var j = JSON.parse(data);
-            console.log(j);
-            //var k = JSON.parse(j.val);
             res.render('disp', { num: j,disp:req.params.num.toString()});
         });
     });

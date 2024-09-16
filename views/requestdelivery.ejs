@@ -15,16 +15,16 @@
             }
         })
 
-        $('#Thermo').change(function(){
-            if($('#Thermo').val()==0){
-                $('#cargo-body').removeClass('hiddenPay')
-                $('#thermo-body').addClass('hiddenPay')
+        // $('#Thermo').change(function(){
+        //     if($('#Thermo').val()==0){
+        //         $('#cargo-body').removeClass('hiddenPay')
+        //         $('#thermo-body').addClass('hiddenPay')
                 
-            }else{
-                $('#cargo-body').addClass('hiddenPay')
-                $('#thermo-body').removeClass('hiddenPay')
-            }
-        })
+        //     }else{
+        //         $('#cargo-body').addClass('hiddenPay')
+        //         $('#thermo-body').removeClass('hiddenPay')
+        //     }
+        // })
 
         $('#tabFilterSend').change(function(){
             const tabFilterSend = $('#tabFilterSend').val().toUpperCase();
@@ -65,38 +65,9 @@
 </div>
 
 <div class="container">
-    <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="#">СВС-Логистик</a>
-    </div>
-    <div id="navbar" class="navbar-collapse collapse">
-        <ul class="nav navbar-nav navbar-right">
-            <li class="active"><a href="/">Home</a></li>
-            <li><a href="#about">Features</a></li>
-            <li><a href="#contact">About</a></li>
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                    <li><a href="#">Action</a></li>
-                    <li><a href="#">Another action</a></li>
-                    <li><a href="#">Something else here</a></li>
-                    <li role="separator" class="divider"></li>
-                    <li class="dropdown-header">Nav header</li>
-                    <li><a href="#">Separated link</a></li>
-                    <li><a href="#">One more separated link</a></li>
-                </ul>
-            </li>
-            <li><a href="#about">Q&A</a></li>
-            <li><a href="#" class="btn btn-default">Get a Quote</a></li>
-        </ul>
-    </div>
+   
 </div>
-<br><br>
+
 <div class="container">
     <div id="content">
         <div id="sendinfo" class=" col-sm-6 col-xs-12">
@@ -279,24 +250,12 @@
         <!-- <div id="geninfo" class="col-sm-12 col-xs-12">
         <div class="panel panel-default">
             <div class="panel-heading">Терморежим</div>
-            <div class="panel-body">
+            <div class="panel-body"> -->
 
-                <div class="form-group">
-                    <label class="control-label col-sm-3" for="sel1">Терморежим:</label>
-                    <div class="col-sm-9 paddingbottomclass">
-                        <select class="form-control" name = "Thermo" id="Thermo">
-                            <option selected value=0>Не требуется</option>
-                            <option value=1>+2 +8</option>
-                            <option value=2>+15 +25</option>
-                            <option value=3>+2 +25</option>
-                            <option value=4>-15 -20</option>
-                            <option value=5>-60 -80</option>
-                        </select>
-                    </div>
-                </div>
+                
                 
 
-            </div>
+            <!-- </div>
 
         </div>
     </div> -->
@@ -354,69 +313,6 @@
             </div>
 
 
-            <!-- <div id="thermo-body" class="panel panel-default hiddenPay">
-                <div class="panel-heading">Термоконтейнеры</div>
-                <div class="panel-body">
-
-                    <div  id="thermo">
-                        <div class="form-group row" id = "div0">
-                            <div class="col-sm-2">Тип термоконтейнера:</div>
-                                <div class="col-sm-2">
-                                    <select class="form-control" name = "0" id="container0" onchange="setthermo(this.name)">
-                                        <option value=5>SAFEPACK SP-5</option>
-                                        <option value=9>SAFEPACK SP-9</option>
-                                        <option value=20>SAFEPACK SP-20</option>
-                                        <option value=32>SAFEPACK SP-32</option>
-                                        <option value=50>SAFEPACK SP-50</option>
-                                        <option value=80>SAFEPACK SP-80</option>
-                                        <option value=100>SAFEPACK SP-100</option>
-                                    </select>
-                                </div>
-                            
-                            
-                            <div class="col-sm-1">Вес:</div>
-                            <div class="col-sm-1"><input readonly name = "0" id="tm0" type="number" class="form-control" value = "0.2" placeholder="Вес (кг)" ></div>
-                            <div class="col-sm-1">Размер (см):</div>
-                            <div class="col-sm-4">
-
-                                <div class="row">
-                                    <div class="col-sm-3"><input readonly name = "0" id="tl0" type="number" class="form-control" value = "10" ></div>
-                                    <div class="col-sm-1">Х</div>
-                                    <div class="col-sm-3"><input readonly name = "0" id="tw0" type="number" class="form-control" value = "20" ></div>
-                                    <div class="col-sm-1">Х</div>
-                                    <div class="col-sm-3"><input readonly name = "0" id="th0" type="number" class="form-control" value = "5" ></div>
-
-                                </div>
-                            </div>
-                            
-                                
-                            <div class="col-sm-1"><button name = "0" type="button" class="btn btn-default disabled">Удал.</button></div>
-                            
-                        </div>
-                    </div>
-                    <div id ="add-cargo-button" class = "row"><div class="col-sm-3">
-                       
-                            <button type="button" class="btn btn-default" onclick="addthermo(false)">Добавить термоконтейнер</button>
-                        
-                    </div>
-
-                        <div class="col-sm-1">Количество мест:</div>
-                        <div class="col-sm-2"><input readonly id="totalq" type="number" value = "1" class="form-control" ></div>
-                        <div class="col-sm-1">Итого вес (кг):</div>
-                        <div class="col-sm-2"><input readonly id="totalm" type="number" value = "0.2" class="form-control"></div>
-                        
-                        
-                        <div class="col-sm-1">Объемный вес (кг):</div>
-                        <div class="col-sm-2"><input readonly id="totalv" type="number" value = "0.2" class="form-control"></div>
-                     
-                    </div>
-
-                </div>
-
-            </div> -->
-
-            
-
             <div class="panel panel-default">
                 <div class="panel-heading">Данные об отправлении</div>
                 <div class="panel-body">
@@ -450,7 +346,6 @@
                         <div class="col-sm-9 paddingbottomclass">
                             <select class="form-control" name = "DelType" id="DelType">
                                 <option selected value="Стандарт">Стандарт</option>
-                                <!-- <option value="Экспресс">Экспресс</option> -->
                                 <option value="СуперЭкспресс">Супер Экспресс</option>
                                 <option value="ЭкономНаземныйТранспорт">Эконом (Наземный транспорт)</option>
                             </select>
@@ -460,7 +355,7 @@
                     <div class="form-group">
                         <label class="control-label col-sm-3" for="sel1">Тип оплаты:</label>
                         <div class="col-sm-9 paddingbottomclass">
-                            <select class="form-control" name = "PayType" id="PayType">
+                            <select class="form-control" name="PayType" id="PayType">
                                 <option value="ОплатаНаличнымиПриОтправлении">Наличными при отправлении</option>
                                 <option value="ОплатаНаличнымиПриПолучении">Наличными при получении</option>
                                 <% if(logget=='true'){ %>
@@ -497,17 +392,6 @@
 
                         </div>
                     </div>
-                   
-                    <!-- <div class="form-group">
-                        <label class="control-label col-sm-3" for="sel1">С уведомлением</label>
-                        <div class="col-sm-9 paddingbottomclass">
-                            <input class="form-control"  id="Uved" type="checkbox">
-
-                        </div>
-                    </div> -->
-
-                    
-
 
                     <div class="form-group">
                         <label class="control-label col-sm-3" for="sel1">Скан документа</label>
@@ -516,14 +400,6 @@
 
                         </div>
                     </div>
-                    <!-- <div class="form-group">
-                        <label class="control-label col-sm-3" for="sel1">Терморежим</label>
-                        <div class="col-sm-9 paddingbottomclass">
-                            <input class="form-control"  id="thermo" type="checkbox">
-
-                        </div>
-                    </div> -->
-
                     
                     <div class="form-group">
                         <label class="control-label col-sm-3" for="sel1">Вернуть подписанный</label>
@@ -532,6 +408,19 @@
 
                         </div>
                     </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-sm-3" for="Thermo">Терморежим:</label>
+                        <div class="col-sm-9 paddingbottomclass">
+                            <select class="form-control" name = "Thermo" id="Thermo">
+                                <option selected value=0>Отсутствует</option>
+                                <option value=1>-5 -20</option>
+                                <option value=2>+2 +8</option>
+                                <option value=3>+15 +25</option>
+                            </select>
+                        </div>
+                    </div>
+
                     <div class="form-group">
                         <label class="control-label col-sm-3" for="sel1">Стоимость доставки:</label>
                         <div class="col-sm-9 paddingbottomclass">
@@ -539,7 +428,10 @@
 
                         </div>
                     </div>
-                    <div id ="result-adddisp"><button id="calcbtn" type="button" class="btn btn-default">Расчет стоимости доставки</button>     <button id="newDispSend" type="button" class="btn btn-default" >Завершить оформление накладной</button></div>
+                    <div id ="result-adddisp">
+                        <button id="calcbtn" type="button" class="btn btn-default">Расчет стоимости доставки</button>
+                        <button id="newDispSend" type="button" class="btn btn-default" >Завершить оформление накладной</button>
+                    </div>
                 <div class="panel-body">
                     <p class="hidden" id="result"></p>
                 </div>
