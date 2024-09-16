@@ -625,3 +625,23 @@ h7 {
         display: none;
     }
 }
+
+.reNds {
+    color: #888888;
+    font-weight: 100;
+    margin: auto 0;
+}
+
+.flex {
+    display: flex;
+}
+
+.gap16 {
+    gap: 16px
+}
+
+.autosize {
+    width: auto;
+    height: auto !important;
+    margin: 0 !important;
+}

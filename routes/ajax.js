@@ -6,8 +6,33 @@ const bodyParser = require("body-parser");
 const soap = require("soap");
 const urlencodedParser = bodyParser.urlencoded({ extended: false });
 
+router.post("/adduserrequest", urlencodedParser, function (request, response) {
+  console.log("adduserrequest", request.body);
+
+  var param = JSON.stringify({
+    quest: request.body.quest || "",
+    position: request.body.position || "",
+    name: request.body.name || "",
+    inn: request.body.inn || "",
+    company: request.body.company || "",
+    nds: !!request.body.nds,
+    email: request.body.email || "",
+    type: request.body.type || "",
+    phone: request.body.phone || "",
+  });
+
+  const args = { param };
+
+  soap.createClient(url, function (err, client) {
+    client.AddUserRequest(args, function (err, result) {
+      var data = result.return;
+      console.log("createClient", data);
+      response.send(data);
+    });
+  });
+});
+
 router.post("/tracknum", urlencodedParser, function (request, response) {
-  console.log(request.body);
   var args = { Num: request.body.num };
 
   soap.createClient(url, function (err, client) {
