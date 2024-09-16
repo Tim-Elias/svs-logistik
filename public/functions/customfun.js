@@ -1,39 +1,30 @@
-
-const soap = require('soap');
-const url = 'http://91.208.253.178/cs/maws.1cws?wsdl';
+const soap = require("soap");
+const url = "http://srv.svs-logistik.ru/cs/maws.1cws?wsdl";
 var j;
 
-function srlist (UserID,Hash,UserIP) {
-   console.log("vivedet?");
+function srlist(UserID, Hash, UserIP) {
+  console.log("vivedet?");
 
-    var params = {
-        "UserIP": UserIP,
-        "Hash": Hash,
-        "UserId": UserID
+  var params = {
+    UserIP: UserIP,
+    Hash: Hash,
+    UserId: UserID,
+  };
+  var args = { LoginXDTO: params };
+  //console.log(args);
 
-
-    };
-    var args = {LoginXDTO:params};
-    //console.log(args);
-
-    soap.createClient(url, function(err, client) {
-        client.SiteSrdir(args, function(err, result) {
-            var data = result.return;
-            //console.log(data);
-            j = JSON.parse(data);
-            //console.log(p1);
-            //console.log(obj);
-            console.log("customfun return " + j);
-
-        });
+  soap.createClient(url, function (err, client) {
+    client.SiteSrdir(args, function (err, result) {
+      var data = result.return;
+      //console.log(data);
+      j = JSON.parse(data);
+      //console.log(p1);
+      //console.log(obj);
+      console.log("customfun return " + j);
     });
+  });
 
-
-
-    console.log('fun is run');
-
-
-};
+  console.log("fun is run");
+}
 
 module.exports.srlist = srlist;
-
