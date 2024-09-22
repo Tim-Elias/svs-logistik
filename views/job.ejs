@@ -1,0 +1,68 @@
+<%- include("parts/head.ejs") %> <%- include("parts/menu.ejs") %>
+<div class="loader loader-bg">
+  <div class="loader-inner ball-clip-rotate-pulse">
+    <div></div>
+    <div></div>
+  </div>
+</div>
+
+<div class="container">
+  <form>
+    <h2>Хочу работать в СВС-Логистик</h2>
+
+    <div class="row">
+      <div class="col-md-4">
+        <label>Имя Фамилия</label>
+        <input type="text" class="form-control complite city" id="jobname" />
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4">
+        <label>Контактный телефон</label>
+        <input type="text" class="form-control complite city" id="jobphone" />
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4">
+        <label>e-mail</label>
+        <input type="text" class="form-control complite city" id="jobmail" />
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4">
+        <label>Желаемая должность</label>
+        <input
+          type="text"
+          class="form-control complite city"
+          id="jobposition"
+        />
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4">
+        <label>Информация о себе</label>
+        <textarea class="form-control complite city" id="jobinfo"></textarea>
+      </div>
+    </div>
+
+    <br />
+
+    <div class="row">
+      <div class="col-md-1">
+        <button id="jobsend" class="btn btn-default" type="button">
+          Отправить заявку
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<div class="container">
+  <p id="jobresult"></p>
+</div>
+
+<%- include("parts/footer.ejs") %>

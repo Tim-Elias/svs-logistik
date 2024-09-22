@@ -632,6 +632,42 @@ $("#contractSend").bind("click", function () {
   });
 });
 
+//----------------------Работа в СВС-----------
+function refuncSuccess(data) {
+  $("#jobresult").text("Данные успешно отправлены");
+}
+
+function refuncbefore() {}
+
+function refuncerror() {
+  alert("Произошла ошибка при отправке данных");
+}
+
+$("#jobsend").bind("click", function () {
+  const name = $("#jobname").val();
+  const email = $("#jobmail").val();
+  const phone = $("#jobphone").val();
+  const position = $("#jobposition").val();
+  const quest = $("#jobinfo").val();
+
+  $.ajax({
+    url: "/ajax/adduserrequest",
+    type: "POST",
+    data: {
+      name,
+      email,
+      phone,
+      position,
+      quest,
+      type: "Работа в СВС",
+    },
+    dataType: "html",
+    beforeSend: refuncbefore,
+    error: refuncerror,
+    success: refuncSuccess,
+  });
+});
+
 //-------------------Добавлени шаблона------------------
 function newtemplatefuncSuccess() {
   location.reload();
