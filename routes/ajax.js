@@ -7,8 +7,6 @@ const soap = require("soap");
 const urlencodedParser = bodyParser.urlencoded({ extended: false });
 
 router.post("/adduserrequest", urlencodedParser, function (request, response) {
-  console.log("adduserrequest", request.body);
-
   var param = JSON.stringify({
     quest: request.body.quest || "",
     position: request.body.position || "",
@@ -26,7 +24,6 @@ router.post("/adduserrequest", urlencodedParser, function (request, response) {
   soap.createClient(url, function (err, client) {
     client.AddUserRequest(args, function (err, result) {
       var data = result.return;
-      console.log("createClient", data);
       response.send(data);
     });
   });
