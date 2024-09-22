@@ -15,7 +15,7 @@ router.post("/adduserrequest", urlencodedParser, function (request, response) {
     name: request.body.name || "",
     inn: request.body.inn || "",
     company: request.body.company || "",
-    nds: !!request.body.nds,
+    nds: request.body.nds || "",
     email: request.body.email || "",
     type: request.body.type || "",
     phone: request.body.phone || "",
