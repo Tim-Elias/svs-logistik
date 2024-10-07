@@ -3,7 +3,7 @@ var router = express.Router();
 const email = require("emailjs");
 const bodyParser = require("body-parser");
 const soap = require("soap");
-const url = "http://srv.svs-logistik.ru/cs/maws.1cws?wsdl";
+const url = "http://srv.svs-logistik.ru:2080/cs/maws.1cws?wsdl";
 const urlencodedParser = bodyParser.urlencoded({ extended: false });
 
 var data;

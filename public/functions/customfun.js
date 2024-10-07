@@ -1,5 +1,5 @@
 const soap = require("soap");
-const url = "http://srv.svs-logistik.ru/cs/maws.1cws?wsdl";
+const url = "http://srv.svs-logistik.ru:2080/cs/maws.1cws?wsdl";
 var j;
 
 function srlist(UserID, Hash, UserIP) {

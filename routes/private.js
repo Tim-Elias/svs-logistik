@@ -5,7 +5,7 @@ const bodyParser = require("body-parser");
 const urlencodedParser = bodyParser.urlencoded({ extended: false });
 const soap = require("soap");
 const md5 = require("md5");
-const url = "http://srv.svs-logistik.ru/cs/maws.1cws?wsdl";
+const url = "http://srv.svs-logistik.ru:2080/cs/maws.1cws?wsdl";
 var sess;
 router.post("/", urlencodedParser, function (request, response) {
   let login = request.body.login;

@@ -1,4 +1,4 @@
-const url = "http://srv.svs-logistik.ru/cs/maws.1cws?wsdl";
+const url = "http://srv.svs-logistik.ru:2080/cs/maws.1cws?wsdl";
 
 const express = require("express");
 const router = express.Router();
