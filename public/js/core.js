@@ -65,26 +65,41 @@ function calcfuncSuccess(data) {
   }
   $("#result").text("");
   var arr = JSON.parse(data);
-  arr.forEach(function (item, i, arr) {
+  if (arr.length > 0) {
     $("#result").append(
       "<br><p>По направлению " +
         $("#sendCity").val() +
         " - " +
         $("#recCity").val() +
-        " предлагаем следущие тарифы:</p>" +
-        " <ul><li>Физический вес: " +
-        $("#totalm").val() +
-        "</li><li>Объемный вес: " +
-        $("#totalv").val() +
-        "</li><li>Стоимость доставки: " +
-        item.price +
-        "</li><li>Страховая стоимость: " +
-        item.insurence +
-        "</li><li>Срок доставки(раб. дней): " +
-        item.time +
-        "</li></ul>"
+        " предлагаем следущие тарифы:</p><br>"
     );
-  });
+
+    arr.forEach(function (item, i, arr) {
+      $("#result").append(
+        "<h5>Тариф " +
+          item.type +
+          "</h5> <ul><li>Физический вес: " +
+          $("#totalm").val() +
+          "</li><li>Объемный вес: " +
+          $("#totalv").val() +
+          "</li><li>Стоимость доставки: " +
+          item.price +
+          "</li><li>Страховая стоимость: " +
+          item.insurence +
+          "</li><li>Срок доставки(раб. дней): " +
+          item.time +
+          "</li></ul><br>"
+      );
+    });
+  } else {
+    $("#result").append(
+      "<br><p>По направлению " +
+        $("#sendCity").val() +
+        " - " +
+        $("#recCity").val() +
+        " тарифы не найдены</p>"
+    );
+  }
 }
 
 function calcfuncbefore() {
