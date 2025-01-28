@@ -1,36 +1,42 @@
-<%- include("parts/head.ejs") %>
-<%- include("parts/menu.ejs") %>
+<%- include("parts/head.ejs") %> <%- include("parts/menu.ejs") %>
 <div class="loader loader-bg">
-    <div class="loader-inner ball-clip-rotate-pulse">
-        <div></div>
-        <div></div>
+  <div class="loader-inner ball-clip-rotate-pulse">
+    <div></div>
+    <div></div>
+  </div>
+</div>
+
+<div class="container"></div>
+
+<div class="container">
+  <div class="input-group">
+    <input
+      id="trackInput"
+      type="text"
+      class="form-control"
+      placeholder="Поиск"
+      value="<%= orderNo %>"
+    />
+    <div class="input-group-btn">
+      <button id="trackbutton" class="btn btn-default" type="button">
+        <i class="glyphicon glyphicon-search"></i>
+      </button>
     </div>
+  </div>
 </div>
-
+<br />
 <div class="container">
-   
+  <table class="table table-bordered table-content">
+    <tbody id="result"></tbody>
+  </table>
 </div>
-
-<div class="container">
-        <div class="input-group">
-            <input id="trackInput" type="text" class="form-control" placeholder="Поиск">
-            <div class="input-group-btn">
-                <button id="trackbutton" class="btn btn-default" type="button">
-                    <i class="glyphicon glyphicon-search"></i>
-                </button>
-            </div>
-        </div>
-
-</div>
-<br>
-<div class="container">
-<table class="table table-bordered table-content" >
-
-    <tbody id="result">
-    </tbody>
-</table>
-
-
-</div>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const orderNo = "<%= orderNo %>";
+    if (orderNo) {
+      document.getElementById("trackbutton").click();
+    }
+  });
+</script>
 
 <%- include("parts/footer.ejs") %>

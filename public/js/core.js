@@ -10,8 +10,7 @@ if (".loader".length) {
 
 function trackfuncSuccess(data) {
   if (data == "err") {
-    alert("Ошибка данных");
-    location.reload();
+    document.getElementById("result").innerHTML = "Нет данных..";
   }
   //document.getElementById('result').innerHTML = data;
   var arr = JSON.parse(data);
@@ -46,8 +45,15 @@ function trackfuncerror() {
 }
 
 $("#trackbutton").bind("click", function () {
-  //alert("click");
-  let num = $("#trackInput").val();
+  let num = $("#trackInput").val().trim();
+
+  // 1) Обновляем URL (без перезагрузки)
+  const newUrl = new URL(window.location.href);
+  newUrl.searchParams.set("order_no", num);
+  // pushState добавит новую запись в историю; replaceState заменит текущую
+  window.history.pushState({}, "", newUrl);
+
+  // 2) Выполняем AJAX-запрос
   $.ajax({
     url: "/ajax/tracknum",
     type: "POST",
