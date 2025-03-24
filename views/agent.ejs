@@ -1,0 +1,111 @@
+<%- include("parts/head.ejs") %> <%- include("parts/menu.ejs") %>
+<div class="loader loader-bg">
+  <div class="loader-inner ball-clip-rotate-pulse">
+    <div></div>
+    <div></div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 pull-left">
+      <form class="form-box">
+        <h3 class="text-center">Стать агентом СВС-Логистик</h3>
+
+        <div class="form-group">
+          <div class="col-md-12">
+            <input
+              type="text"
+              class="form-control"
+              id="agentName"
+              placeholder="Имя"
+            />
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-md-12">
+            <input
+              type="text"
+              class="form-control"
+              id="agentEmail"
+              placeholder="Email"
+            />
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-md-12">
+            <input
+              type="text"
+              class="form-control"
+              id="agentPhone"
+              placeholder="Номер телефона"
+            />
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-md-12">
+            <input
+              type="text"
+              class="form-control"
+              id="agentCity"
+              placeholder="Город"
+            />
+          </div>
+        </div> 
+        <div class="form-group">
+          <div class="col-md-12">
+            <input
+              type="text"
+              class="form-control"
+              id="agentCompany"
+              placeholder="Название организации"
+            />
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-md-12">
+            <input
+              rows="3"
+              class="form-control"
+              id="agentInn"
+              placeholder="ИНН"
+            ></input>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-md-12">
+            <textarea
+              rows="3"
+              class="form-control"
+              id="agentDescription"
+              placeholder="Расскажите о себе"
+            ></textarea>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-md-12">
+            <button
+              type="button"
+              id="agentSend"
+              class="btn btn-lg btn-success btn-block"
+            >
+              Отправить данные
+            </button>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-md-12">
+            <h4 id="agentSended"></h4>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script src="/public/js/citys.js" type="text/javascript"></script>
+<div class="container">
+  <p id="result"></p>
+</div>
+
+<%- include("parts/footer.ejs") %>

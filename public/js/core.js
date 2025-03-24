@@ -653,6 +653,49 @@ $("#contractSend").bind("click", function () {
   });
 });
 
+//----------------------Стать агентом-----------
+function agentfuncSuccess(data) {
+  console.log("refuncSuccess", data);
+
+  $("#agentSended").text("Данные успешно отправлены");
+}
+
+function agentfuncbefore() {}
+
+function agentfuncerror() {
+  alert("Произошла ошибка при отправке данных");
+}
+
+$("#agentSend").bind("click", function () {
+
+  const name = $("#agentName").val();
+  const email = $("#agentEmail").val();
+  const phone = $("#agentPhone").val();
+  const company = $("#agentCompany").val();
+  const city = $("#agentCity").val();
+  const inn = $("#agentInn").val();
+  const quest = $("#agentDescription").val();
+
+
+  $.ajax({
+    url: "/ajax/adduserrequest",
+    type: "POST",
+    data: {
+      name,
+      email,
+      phone,
+      company: `${city}, ${company}`,
+      inn,
+      quest,
+      type: "Стать агентом СВС-Логистик",
+    },
+    dataType: "html",
+    beforeSend: agentfuncbefore,
+    error: agentfuncerror,
+    success: agentfuncSuccess,
+  });
+});
+
 //----------------------Работа в СВС-----------
 function refuncSuccess(data) {
   $("#jobresult").text("Данные успешно отправлены");

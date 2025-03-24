@@ -12,6 +12,7 @@ var privateRouter = require("./routes/private");
 var trackRouter = require("./routes/track");
 var ajaxRouter = require("./routes/ajax");
 var calcRouter = require("./routes/calc");
+var agentRouter = require("./routes/agent");
 var app = express();
 
 app.use(session({ secret: "keyboard cat" }));
@@ -31,6 +32,7 @@ app.use("/public", express.static(__dirname + "/public"));
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/about", aboutRouter);
+app.use("/agent", agentRouter);
 app.use("/private", privateRouter);
 app.use("/track", require("./routes/track"));
 app.use("/ajax", ajaxRouter);
